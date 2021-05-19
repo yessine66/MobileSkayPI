@@ -13,6 +13,7 @@ import com.codename1.ui.Toolbar;
 import java.io.IOException;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
+import com.mycompany.gui.AjouterPartenaire;
 import com.mycompany.gui.AjouterUtilisateurForm;
 import com.mycompany.gui.ListUtilisateurForm;
 import com.mycompany.gui.NewsfeedForm;
@@ -56,9 +57,9 @@ public class MyApplication {
             current.show();
             return;
         }
-        
+       new AjouterPartenaire(theme).show(); 
        //new AjouterUtilisateurForm(theme).show();
-      new ListUtilisateurForm(theme).show();
+      //new ListUtilisateurForm(theme).show();
        //new SignUpForm(theme).show();
        // new NewsfeedForm(theme).show();
        //new SignInForm(theme).show();

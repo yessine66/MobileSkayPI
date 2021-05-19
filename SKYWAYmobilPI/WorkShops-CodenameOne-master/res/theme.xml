@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="11" useXmlUI="false">
+    <image name="1549623325.jpg"  />
+    <image name="2425693_original.jpg"  />
     <image name="activation-background.jpg"  />
     <image name="admin.png"  />
+    <image name="ajHrkqeGvr6NF3eZSs3f.png"  />
     <image name="back-logo.jpeg"  />
+    <image name="checked.png"  />
     <image name="client.png"  />
     <image name="confirmation-background.jpg"  />
     <image name="dog.jpg"  />
     <image name="facebook-logo.png" type="multi"  />
+    <image name="image_news_get.png"  />
+    <image name="KFC_logo.svg.png"  />
     <image name="Logo.png" type="multi"  />
+    <image name="Main.png"  />
     <image name="news-item-1.jpg"  />
     <image name="news-item-2.jpg"  />
     <image name="news-item-3.jpg"  />
@@ -16,6 +23,7 @@
     <image name="news-item.jpg"  />
     <image name="news-tab-down-arrow.png" type="multi"  />
     <image name="news-tab-down.png" type="multi"  />
+    <image name="nour.png"  />
     <image name="on-off-off.png" type="multi"  />
     <image name="on-off-on.png" type="multi"  />
     <image name="profile-background.jpg"  />
@@ -333,8 +341,10 @@
     </theme>
     <image name="timeline-background.jpg"  />
     <image name="twitter-logo.png" type="multi"  />
+    <image name="t&#xe9;l&#xe9;chargement.png"  />
     <image name="welcome-background.jpg"  />
     <image name="welcome-slide-1.png" type="multi"  />
     <image name="welcome-slide-2.png" type="multi"  />
     <image name="welcome-slide-3.png" type="multi"  />
+    <image name="yflio2F_.jpg"  />
 </resource>
