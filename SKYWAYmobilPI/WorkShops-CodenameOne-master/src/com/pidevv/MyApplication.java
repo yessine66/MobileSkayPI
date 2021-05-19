@@ -62,8 +62,8 @@ public class MyApplication {
      // new ListUtilisateurForm(theme).show();
        //new SignUpForm(theme).show();
       // new NewsfeedForm(theme).show();
-      // new SignInForm(theme).show();
-      new MenuBack(theme,theme.getImage("menux.png")).show();
+       new SignInForm(theme).show();
+      //new MenuBack(theme,theme.getImage("menux.png")).show();
     }
 
     public void stop() {
