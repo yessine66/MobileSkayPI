@@ -35,12 +35,25 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+
+
+
+
+
 /**
  * Account activation UI
  *
  * @author Shai Almog
  */
 public class ActivateForm extends BaseForm {
+    
+    
+    public static final String ACCOUNT_SID = "AC8fa3666f9dd4ed903b184cb4b239346d";
+    public static final String AUTH_TOKEN = "5b130ecd79d7d21f0e965cade0b2c610";
+    
 
     public ActivateForm(Resources res) {
         super(new BorderLayout());
@@ -82,6 +95,17 @@ public class ActivateForm extends BaseForm {
         add(BorderLayout.SOUTH, content);
         signUp.requestFocus();
         signUp.addActionListener(e -> new NewsfeedForm(res).show());
+        
+        resend.addActionListener(l-> {
+            System.out.println("\n\n\n vvvvvvvotre numeroooo esttt  : "+code.getText());
+            
+             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        
+
+       Message message = Message.creator(new PhoneNumber("+21652635795"), new PhoneNumber("+14133442783"), "Your Password is : "+"mimi").create();
+            
+        });
+        
     }
     
 }
