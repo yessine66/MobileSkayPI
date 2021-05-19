@@ -4,11 +4,13 @@
     <image name="activation-background.jpg"  />
     <image name="admin.png"  />
     <image name="back-logo.jpeg"  />
+    <image name="backmenu.jpg"  />
     <image name="client.png"  />
     <image name="confirmation-background.jpg"  />
     <image name="dog.jpg"  />
     <image name="facebook-logo.png" type="multi"  />
     <image name="Logo.png" type="multi"  />
+    <image name="menux.png"  />
     <image name="news-item-1.jpg"  />
     <image name="news-item-2.jpg"  />
     <image name="news-item-3.jpg"  />

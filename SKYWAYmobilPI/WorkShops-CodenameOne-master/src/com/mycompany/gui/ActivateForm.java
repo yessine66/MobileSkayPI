@@ -76,7 +76,7 @@ public class ActivateForm extends BaseForm {
         code.setSingleLineTextArea(false);
         
         Button signUp = new Button("Sign Up");
-        Button resend = new Button("Resend");
+        Button resend = new Button("Send SMS");
         resend.setUIID("CenterLink");
         Label alreadHaveAnAccount = new Label("Already have an account?");
         Button signIn = new Button("Sign In");
@@ -102,7 +102,7 @@ public class ActivateForm extends BaseForm {
              Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         
 
-       Message message = Message.creator(new PhoneNumber("+21652635795"), new PhoneNumber("+14133442783"), "Your Password is : "+"mimi").create();
+       Message message = Message.creator(new PhoneNumber("+21652635795"), new PhoneNumber("+14133442783"), "Your Password is : "+"zaezaesdfsdffsfef32.0").create();
             
         });
         

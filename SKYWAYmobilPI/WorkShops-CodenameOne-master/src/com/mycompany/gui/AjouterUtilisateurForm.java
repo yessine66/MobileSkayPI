@@ -119,8 +119,8 @@ public class AjouterUtilisateurForm extends BaseForm{
         ButtonGroup barGroup = new ButtonGroup();
         RadioButton mesListes = RadioButton.createToggle("Accounts", barGroup);
         mesListes.setUIID("SelectBar");
-        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
-        liste.setUIID("SelectBar");
+//        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
+//        liste.setUIID("SelectBar");
         RadioButton partage = RadioButton.createToggle("Ajouter Compte", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
@@ -148,7 +148,7 @@ public class AjouterUtilisateurForm extends BaseForm{
         });
 
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(3, mesListes, liste, partage),
+                GridLayout.encloseIn(2, mesListes, partage),
                 FlowLayout.encloseBottom(arrow)
         ));
 
@@ -159,7 +159,7 @@ public class AjouterUtilisateurForm extends BaseForm{
             updateArrowPosition(partage, arrow);
         });
         bindButtonSelection(mesListes, arrow);
-        bindButtonSelection(liste, arrow);
+       // bindButtonSelection(liste, arrow);
         bindButtonSelection(partage, arrow);
         // special case for rotation
         addOrientationListener(e -> {
