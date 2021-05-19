@@ -51,6 +51,8 @@ public class SignInForm extends BaseForm {
         
         add(BorderLayout.NORTH, new Label(res.getImage("Logo.png"), "LogoLabel"));
         
+        
+        
         TextField username = new TextField("", "Username", 20, TextField.ANY);
         TextField password = new TextField("", "Password", 20, TextField.PASSWORD);
         username.setSingleLineTextArea(false);
@@ -73,7 +75,7 @@ public class SignInForm extends BaseForm {
         add(BorderLayout.SOUTH, content);
         signIn.requestFocus();
         signIn.addActionListener(e -> {
-            System.out.println("\n\n\n\n\nd5alna lel boutton b login nzelna aa sign in *********\n\n");
+          //  System.out.println("\n\n\n\n\nd5alna lel boutton b login nzelna aa sign in *********\n\n");
             ServiceUtilisateurFront.getInstance().signin(username, password, res);
         });
     }
