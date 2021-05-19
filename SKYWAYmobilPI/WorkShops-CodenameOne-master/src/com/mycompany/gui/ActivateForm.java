@@ -59,7 +59,7 @@ public class ActivateForm extends BaseForm {
                 )
         );
         
-        TextField code = new TextField("", "Enter Code", 20, TextField.PASSWORD);
+        TextField code = new TextField("", "Enter Your phone number ", 20, TextField.PASSWORD);
         code.setSingleLineTextArea(false);
         
         Button signUp = new Button("Sign Up");
