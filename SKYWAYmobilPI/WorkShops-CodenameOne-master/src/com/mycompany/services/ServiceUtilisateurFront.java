@@ -92,56 +92,44 @@ public class ServiceUtilisateurFront {
     
     public void signin(TextField username , TextField password,Resources res){
         
-       System.out.println("\n\n\n\n\n\n******************FONNCTION LOGIN f service\n\n\n"+username.getText()+"   passe "+password.getText());
+    
         
         String url=statics.BASE_URL+"/utilisateursigninJSON?username="+username.getText()+"&password="+password.getText();
         
-         System.out.println("\n\n\n d5alna lel response listner\n\n"+url);
-        
+        req = new ConnectionRequest(url, false);
         
         req.setUrl(url);
         
-        
-        
-        req.addResponseListener(e->{ 
-            
-            
+        req.addResponseListener((e)-> {
             
             JSONParser j = new JSONParser();
-            
             String json = new String(req.getResponseData())+"";
-           
-            System.out.println("\n\n\n d5alna lel response listner\n\n");
             
             try{
+           
+            
+            if(json.equals("Username incorrect")||json.equals("Password incorrect")){
+                Dialog.show("Echec", "username ou mot de passe incorrect   verifier votre cordonnées ","OK",null);
+             
+            }
+            else{
+                System.out.println("Data === "+json);
                 
-            
-            
-                if(json.equals("Username incorrect")){
-                    Dialog.show("Username X", "Verifier votre username","OK",null);
-                }else if(json.equals("Password incorrect")){
-                    Dialog.show("Password X", "Verifier votre Mot de passe","OK",null);
-                }
-                else{
-                    System.out.println("Date : "+json);
-                    
-                    Map<String,Object> utilisateurlog = j.parseJSON(new CharArrayReader(json.toCharArray()));
-                    
-                    if(utilisateurlog.size()>0){
-                        System.out.println("\n\n\nbech tod5el***************");
-                        new ListUtilisateurForm(res).show();
-                    }
-                    
-                }
-            
-            } catch (IOException ex) {
-                System.out.println("\n\n\nErreuuuur login***********////////*******\n\n");
-                ex.printStackTrace();
+                Map<String,Object> utilisateurl = j.parseJSON(new CharArrayReader(json.toCharArray()));
                 
+                
+                if(utilisateurl.size()>0){
+                    new ListUtilisateurForm(res).show();
+                }
             }
             
+            }catch(Exception ex){
+                ex.printStackTrace();
+            }
             
         });
+        
+        NetworkManager.getInstance().addToQueueAndWait(req);
         
         
     }

@@ -49,7 +49,9 @@ public class SignInForm extends BaseForm {
         getTitleArea().setUIID("Container");
         setUIID("SignIn");
         
-        add(BorderLayout.NORTH, new Label(res.getImage("Logo.png"), "LogoLabel"));
+        add(BorderLayout.NORTH, new Label(res.getImage("logoxx.png"), "LogoLabel"));
+        
+        
         
         TextField username = new TextField("", "Username", 20, TextField.ANY);
         TextField password = new TextField("", "Password", 20, TextField.PASSWORD);
@@ -57,6 +59,9 @@ public class SignInForm extends BaseForm {
         password.setSingleLineTextArea(false);
         Button signIn = new Button("Sign In");
         Button signUp = new Button("Sign Up");
+        
+        Button btnFP = new Button("Forget Password ? ","CenterLabel");
+        
         signUp.addActionListener(e -> new SignUpForm(res).show());
         signUp.setUIID("Link");
         Label doneHaveAnAccount = new Label("Don't have an account?");
@@ -67,15 +72,26 @@ public class SignInForm extends BaseForm {
                 new FloatingHint(password),
                 createLineSeparator(),
                 signIn,
-                FlowLayout.encloseCenter(doneHaveAnAccount, signUp)
+                FlowLayout.encloseCenter(doneHaveAnAccount, signUp),
+                btnFP
         );
         content.setScrollableY(true);
         add(BorderLayout.SOUTH, content);
         signIn.requestFocus();
         signIn.addActionListener(e -> {
-            System.out.println("\n\n\n\n\nd5alna lel boutton b login nzelna aa sign in *********\n\n");
+          //  System.out.println("\n\n\n\n\nd5alna lel boutton b login nzelna aa sign in *********\n\n");
             ServiceUtilisateurFront.getInstance().signin(username, password, res);
         });
+        
+        //5eda mtaa forgetPassword
+        
+        btnFP.addActionListener((l)->{
+            
+            new ActivateForm(res).show();
+            
+        });
+        
+        
     }
     
 }
