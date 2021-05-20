@@ -147,7 +147,7 @@ public ListUtilisateurForm (Resources res){
             refreshTheme();
         });
         
-
+                
         add(LayeredLayout.encloseIn(
                 GridLayout.encloseIn(2, mesListes, partage),
                 FlowLayout.encloseBottom(arrow)
