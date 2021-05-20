@@ -71,6 +71,7 @@ public class ContactP extends BaseForm {
         getContentPane().setScrollVisible(false);
         
         
+        super.addSideMenu(res);
         
         tb.addSearchCommand(s -> { 
         

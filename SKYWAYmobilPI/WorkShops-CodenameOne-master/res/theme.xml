@@ -12,6 +12,7 @@
     <image name="confirmation-background.jpg"  />
     <image name="dog.jpg"  />
     <image name="facebook-logo.png" type="multi"  />
+    <image name="fatma.png"  />
     <image name="image_news_get.png"  />
     <image name="KFC_logo.svg.png"  />
     <image name="Logo.png" type="multi"  />
@@ -24,7 +25,6 @@
     <image name="news-item.jpg"  />
     <image name="news-tab-down-arrow.png" type="multi"  />
     <image name="news-tab-down.png" type="multi"  />
-    <image name="nour.png"  />
     <image name="on-off-off.png" type="multi"  />
     <image name="on-off-on.png" type="multi"  />
     <image name="profile-background.jpg"  />

@@ -93,6 +93,11 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("stat", FontImage.MATERIAL_EXIT_TO_APP, e -> new CatDomaine(res).show());
         tb.addMaterialCommandToSideMenu("ajouter promo", FontImage.MATERIAL_UPDATE, e -> new AjouterPromotion(res).show());
         tb.addMaterialCommandToSideMenu("Liste promo", FontImage.MATERIAL_LOCAL_FIRE_DEPARTMENT, e -> new ListePromotionForm(res).show());
+        tb.addMaterialCommandToSideMenu("Ajouter Question", FontImage.MATERIAL_ADD_TASK, e -> new AjouterQuestion(res).show());
+        tb.addMaterialCommandToSideMenu("Lister  Question", FontImage.MATERIAL_HELP, e -> new ListeQuestionForm(res).show());
+        
+                tb.addMaterialCommandToSideMenu("Ajouter Reponse", FontImage.MATERIAL_THUMB_UP, e -> new AjouterReponse(res).show());
+        tb.addMaterialCommandToSideMenu("Lister  Reponse", FontImage.MATERIAL_FINGERPRINT, e -> new ListeReponseForm(res).show());
         
         tb.addMaterialCommandToSideMenu("Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> System.out.println("\n\n ibtiiheellll"));
         

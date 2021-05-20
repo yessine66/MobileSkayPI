@@ -91,14 +91,14 @@ public class ServiceQuestion {
                     Question promo = new Question();
                     float idQ = Float.parseFloat(obj.get("idQ").toString());
                     String textQ = obj.get("textQ").toString();
-                 //    float nbrPoint= Float.parseFloat(obj.get("nbrPoint").toString());
+                    float nbrPoint= Float.parseFloat(obj.get("nbrPoint").toString());
                          String nameT = obj.get("nameT").toString();
                      
                             
                             
                         promo.setIdQ((int) idQ);
                         promo.setTextQ(textQ);
-                     //   promo.setNbrPoint((int) nbrPoint);
+                       promo.setNbrPoint((int) nbrPoint);
                         promo.setNameT(nameT);
                        
                          

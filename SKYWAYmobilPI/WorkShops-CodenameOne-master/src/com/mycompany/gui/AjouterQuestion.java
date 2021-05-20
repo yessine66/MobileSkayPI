@@ -57,6 +57,7 @@ public class AjouterQuestion extends BaseForm {
         setTitle ("AJouter une question");
         getContentPane().setScrollVisible(false);
   
+        super.addSideMenu(res);
         
         tb.addSearchCommand(s -> { 
                 } );
@@ -66,7 +67,7 @@ public class AjouterQuestion extends BaseForm {
         Label s1= new Label ();
          Label s2= new Label ();
          
-        addTab(swipe,s1,res.getImage("quiz.png"),"","",res);
+        addTab(swipe,s1,res.getImage("fatma.png"),"","",res);
         
         swipe.setUIID("Container");
         swipe.getContentPane().setUIID("Container");
@@ -205,7 +206,7 @@ public class AjouterQuestion extends BaseForm {
                       ToastBar.Status status = ToastBar.getInstance().createStatus();
  status.setShowProgressIndicator(true);
 
-   status.setIcon(res.getImage("quiz.png").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));                    
+   status.setIcon(res.getImage("fatma.png").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));                    
                             status.setMessage("makch nrml");
                                                   status.setExpires(10000);  // only show the status for 3 seconds, then have it automatically clear
 
@@ -278,7 +279,7 @@ public class AjouterQuestion extends BaseForm {
                  );
                  
                  
-      swipe.addTab ("",res.getImage("quiz.png"),page1);
+      swipe.addTab ("",res.getImage("fatma.png"),page1);
       
       
       

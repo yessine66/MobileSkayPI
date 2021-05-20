@@ -90,7 +90,7 @@ public class ListeReponseForm extends BaseForm{
     
       setTitle ("AJouter Reponse");
         getContentPane().setScrollVisible(false);
-        
+        super.addSideMenu(res);
         
       
         /*       
@@ -127,7 +127,7 @@ getContentPane().animateLayout(250);
         Label s1= new Label ();
          Label s2= new Label ();
          
-        addTab(swipe,s1,res.getImage("nour.png"),"","",res);
+        addTab(swipe,s1,res.getImage("fatma.png"),"","",res);
         
         
         ///********************************************************/
@@ -169,12 +169,12 @@ getContentPane().animateLayout(250);
         Component.setSameSize(radioContainer, s1, s2);
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
-        ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Reclamations", barGroup);
+      
+      ButtonGroup barGroup = new ButtonGroup();
+        RadioButton mesListes = RadioButton.createToggle("Mes réponses", barGroup);
         mesListes.setUIID("SelectBar");
-        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
-        liste.setUIID("SelectBar");
-        RadioButton partage = RadioButton.createToggle("Reclamer", barGroup);
+        
+        RadioButton partage = RadioButton.createToggle("Ajouter des réponses", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
@@ -189,7 +189,7 @@ getContentPane().animateLayout(250);
         });
 
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(3, mesListes, liste, partage),
+                GridLayout.encloseIn(3, mesListes, partage),
                 FlowLayout.encloseBottom(arrow)
         ));
 
@@ -200,7 +200,7 @@ getContentPane().animateLayout(250);
             updateArrowPosition(partage, arrow);
         });
         bindButtonSelection(mesListes, arrow);
-        bindButtonSelection(liste, arrow);
+       // bindButtonSelection(liste, arrow);
         bindButtonSelection(partage, arrow);
         // special case for rotation
         addOrientationListener(e -> {
@@ -215,7 +215,7 @@ getContentPane().animateLayout(250);
  
  for (Reponse promo: list )
  {
-     String urlImage="nour.png";
+     String urlImage="fatma.png";
      Image placeHolder =Image.createImage(12,90);
      EncodedImage enc= EncodedImage.createFromImage(placeHolder, false);
      URLImage urlimg=URLImage.createToStorage(enc, urlImage, urlImage, URLImage.RESIZE_SCALE);
@@ -280,7 +280,7 @@ getContentPane().animateLayout(250);
                  );
                  
                  
-      swipe.addTab ("",res.getImage("nour.png"),page1);
+      swipe.addTab ("",res.getImage("fatma.png"),page1);
       
       
       
@@ -481,10 +481,10 @@ new ModifierReponseForm(res,promo).show();
          
          
          BoxLayout.encloseX(idR),
-         // BoxLayout.encloseX(datedText),
-          // BoxLayout.encloseX(datefText),
-            BoxLayout.encloseX(TextR1,TextR2,TextR3,TextR4) ,
-         BoxLayout.encloseX(idQ,lmodifier,lsupprimer)) );
+        BoxLayout.encloseX(TextR1,TextR2,TextR3,TextR4),
+          
+         BoxLayout.encloseX(idQ),
+                BoxLayout.encloseX(lmodifier,lsupprimer)) );
  
  
  

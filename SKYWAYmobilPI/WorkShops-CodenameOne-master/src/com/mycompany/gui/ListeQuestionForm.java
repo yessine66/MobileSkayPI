@@ -64,6 +64,8 @@ public class ListeQuestionForm extends BaseForm{
       setTitle ("AJouter Question");
         getContentPane().setScrollVisible(false);
         
+        super.addSideMenu(res);
+        
      
         tb.addSearchCommand(s -> {   
             String text = (String) s.getSource();
@@ -105,7 +107,7 @@ public class ListeQuestionForm extends BaseForm{
         Label s1= new Label ();
          Label s2= new Label ();
          
-        addTab(swipe,s1,res.getImage("quiz.png"),"","",res);
+        addTab(swipe,s1,res.getImage("fatma.png"),"","",res);
         
         
         ///********************************************************/
@@ -150,24 +152,24 @@ public class ListeQuestionForm extends BaseForm{
         ButtonGroup barGroup = new ButtonGroup();
         RadioButton mesListes = RadioButton.createToggle("Mes Questions", barGroup);
         mesListes.setUIID("SelectBar");
-        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
-        liste.setUIID("SelectBar");
+//        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
+//        liste.setUIID("SelectBar");
         RadioButton partage = RadioButton.createToggle("Ajouter", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
 
-        mesListes.addActionListener((e) -> {
+        partage.addActionListener((e) -> {
                InfiniteProgress ip = new InfiniteProgress();
         final Dialog ipDlg = ip.showInifiniteBlocking();
         
-        //  ListReclamationForm a = new ListReclamationForm(res);
-          //  a.show();
+        new AjouterQuestion(res).show();
+
             refreshTheme();
         });
 
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(3, mesListes, liste, partage),
+                GridLayout.encloseIn(2, mesListes, partage),
                 FlowLayout.encloseBottom(arrow)
         ));
 
@@ -178,7 +180,7 @@ public class ListeQuestionForm extends BaseForm{
             updateArrowPosition(partage, arrow);
         });
         bindButtonSelection(mesListes, arrow);
-        bindButtonSelection(liste, arrow);
+        //bindButtonSelection(liste, arrow);
         bindButtonSelection(partage, arrow);
         // special case for rotation
         addOrientationListener(e -> {
@@ -197,7 +199,7 @@ public class ListeQuestionForm extends BaseForm{
   
  for (Question promo: list )
  { 
-     String urlImage="quiz.png";
+     String urlImage="fatma.png";
      Image placeHolder =Image.createImage(12,90);
      EncodedImage enc= EncodedImage.createFromImage(placeHolder, false);
      URLImage urlimg=URLImage.createToStorage(enc, urlImage, urlImage, URLImage.RESIZE_SCALE);

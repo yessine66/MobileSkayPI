@@ -66,7 +66,7 @@ public class AjouterReponse extends BaseForm {
         //combo  1
          partenaires = new ServiceQuestion().afficherQuestion();
     
-
+super.addSideMenu(res);
    
         tb.addSearchCommand(s -> { 
         
@@ -100,7 +100,7 @@ public class AjouterReponse extends BaseForm {
         Label s1= new Label ();
          Label s2= new Label ();
          
-        addTab(swipe,s1,res.getImage("nour.png"),"","",res);
+        addTab(swipe,s1,res.getImage("fatma.png"),"","",res);
         
         
         ///********************************************************/
@@ -143,11 +143,10 @@ public class AjouterReponse extends BaseForm {
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
         ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Reclamations", barGroup);
+        RadioButton mesListes = RadioButton.createToggle("Mes réponses", barGroup);
         mesListes.setUIID("SelectBar");
-        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
-        liste.setUIID("SelectBar");
-        RadioButton partage = RadioButton.createToggle("Reclamer", barGroup);
+        
+        RadioButton partage = RadioButton.createToggle("Ajouter des réponses", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
@@ -177,7 +176,7 @@ public class AjouterReponse extends BaseForm {
         });
 
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(3, mesListes, liste, partage),
+                GridLayout.encloseIn(3, mesListes,  partage),
                 FlowLayout.encloseBottom(arrow)
         ));
 
@@ -188,7 +187,7 @@ public class AjouterReponse extends BaseForm {
             updateArrowPosition(partage, arrow);
         });
         bindButtonSelection(mesListes, arrow);
-        bindButtonSelection(liste, arrow);
+    //    bindButtonSelection(liste, arrow);
         bindButtonSelection(partage, arrow);
         // special case for rotation
         addOrientationListener(e -> {
@@ -365,7 +364,7 @@ public class AjouterReponse extends BaseForm {
                  );
                  
                  
-      swipe.addTab ("",res.getImage("nour.png"),page1);
+      swipe.addTab ("",res.getImage("fatma.png"),page1);
       
       
       
