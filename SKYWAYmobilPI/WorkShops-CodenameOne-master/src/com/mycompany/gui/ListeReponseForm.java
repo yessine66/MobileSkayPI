@@ -6,6 +6,7 @@
 package com.mycompany.gui;
 
 import com.codename1.components.InfiniteProgress;
+import com.codename1.components.MultiButton;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
@@ -27,6 +28,7 @@ import com.codename1.ui.Label;
 import com.codename1.ui.RadioButton;
 import com.codename1.ui.Tabs;
 import com.codename1.ui.TextArea;
+import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BorderLayout;
@@ -35,6 +37,7 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.mycompany.entities.Reponse;
 import com.mycompany.services.ServiceReponse;
@@ -50,46 +53,49 @@ public class ListeReponseForm extends BaseForm{
     {
         
         
-        super("Ajout Reponse",BoxLayout.y());
+      //  super("Ajout Reponse",BoxLayout.y());
        
       Toolbar tb = new Toolbar(true);
         
         current=this;
         setToolbar(tb);
+  
       getTitleArea().setUIID("Container");
-    
-      setTitle ("AJouter Reponse");
+   
         getContentPane().setScrollVisible(false);
         
         
+      
+  /*      
+  TextField searchField;
+searchField = new TextField("", "Articles' List");
+searchField.getHintLabel().setUIID("Title");
+searchField.setUIID("Title");
+getToolbar().setTitleComponent(searchField);
+//if field content changed
+searchField.addDataChangeListener((i1, i2) -> {
+String t = searchField.getText();
+if(t.length() < 1) {
+for(Component cmp : getContentPane()) {
+cmp.setHidden(false);
+cmp.setVisible(true);
+}
+} else {
+t = t.toLowerCase();
+for(Component cmp: getContentPane()) {
+//tekhou el val ta3 el champ : champ li 3malt 3lih el recherche type span label (emplacement : container->container->spanlabel )
+//String val = ((Label) ((Container)((Container) ((Container) ((Container) ((Container)((Container)((Container)((Container)((Container)((Container)((Container) cmp).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getText();
+String val = ((Label) ((Container)((Container) ((Container)((Container) ((Container) ((Container)((Container) ((Container)((Container)((Container) ((Container) cmp).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getText();
+System.out.println( val );
+boolean show = val != null && val.toLowerCase().indexOf(t) > -1;
+cmp.setHidden(!show);
+cmp.setVisible(show);
+}
+}
+getContentPane().animateLayout(250);
+});
         
-        tb.addSearchCommand(s -> { 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        } );
-        
-        
-        
-        
+       */ 
         
         Tabs swipe = new Tabs();
         Label s1= new Label ();
@@ -302,15 +308,23 @@ public class ListeReponseForm extends BaseForm{
     }
 //   private void addButton(Image img ,String codeP, int reduction,String dated,String datef,Reponse promo,Resources res)
     private void addButton(Image img, Reponse promo,Resources res) {
+       
+
+
+
         int height = Display.getInstance().convertToPixels(11.5f);
             int width= Display.getInstance().convertToPixels(14f);
             
             Button image = new Button(img.fill(width,height));
-            
+               Container cnt = BorderLayout.west(image);
+                      Container o = new Container ();
+
             image.setUIID("Label");
-            
+ 
+
+
       //  Container cnt= new Container ();
-      Container cnt = BorderLayout.west(image);
+   
        // Container o = new Container ();
       
   /*   TextArea ta = new TextArea (codeP);
@@ -375,6 +389,7 @@ else
     
     
     }
+               
     
 }
 
@@ -423,7 +438,48 @@ new ModifierReponseForm(res,promo).show();
 
 
 
+ Toolbar.setGlobalToolbar(true);
+          Toolbar tb = new Toolbar(true);
+       
+        setToolbar(tb); 
+Style s = UIManager.getInstance().getComponentStyle("Title");
 
+//orm hi = new Form("Toolbar", new BoxLayout(BoxLayout.Y_AXIS));
+TextField searchField = new TextField("", "Toolbar Search"); // <1>
+searchField.getHintLabel().setUIID("Title");
+searchField.setUIID("Title");
+searchField.getAllStyles().setAlignment(Component.LEFT);
+tb.setTitleComponent(searchField);
+FontImage searchIcon = FontImage.createMaterial(FontImage.MATERIAL_SEARCH, s);
+searchField.addDataChangeListener((i1, i2) -> { // <2>
+    String t = searchField.getText();
+    if(t.length() < 1) {
+        for(Component cmp : cnt) {
+            cmp.setHidden(false);
+            cmp.setVisible(true);
+        }
+    } else {
+        t = t.toLowerCase();
+        for(Component cmp : cnt) {
+            String val = null;
+            if(cmp instanceof Label) {
+                val = ((Label)cmp).getText();
+            } else {
+                if(cmp instanceof TextArea) {
+                    val = ((TextArea)cmp).getText();
+                } else {
+                    val = (String)cmp.getPropertyValue("text");
+                }
+            }
+            boolean show = val != null && val.toLowerCase().indexOf(t) > -1;
+            cmp.setHidden(!show); // <3>
+            cmp.setVisible(show);
+        }
+    }
+    cnt.animateLayout(250);
+    
+
+});
 
 
 

@@ -53,7 +53,7 @@ public class ModifierReponseForm extends BaseForm {
         
       //  super.addSideMenu (res);
         
-         TextField idR= new TextField(String.valueOf(pr.getIdR()), "Id",20,TextField.ANY);
+       //  TextField idR= new TextField(String.valueOf(pr.getIdR()), "Id",20,TextField.ANY);
       TextField TextR1= new TextField(pr.getTextR1(), "Bonne réponse ",20,TextField.ANY);
       TextField TextR2= new TextField(pr.getTextR2(), " premiere mauvaise reponse ",20,TextField.ANY);
       TextField TextR3= new TextField(pr.getTextR3(), "deuxieme mauvaise réponse ",20,TextField.ANY);
@@ -73,7 +73,7 @@ public class ModifierReponseForm extends BaseForm {
    
         
         
-     idR.setUIID("NewTopLine");
+     //idR.setUIID("NewTopLine");
        TextR1.setUIID("NewTopLine");
         TextR2.setUIID("NewTopLine");
        TextR3.setUIID("NewTopLine"); 
@@ -86,7 +86,7 @@ public class ModifierReponseForm extends BaseForm {
         TextR2.setSingleLineTextArea(true);
         TextR3.setSingleLineTextArea(true);
         TextR4.setSingleLineTextArea(true);
-    idR.setSingleLineTextArea(true);   
+ //   idR.setSingleLineTextArea(true);   
            //idP.setSingleLineTextArea(true);
         
         
@@ -98,7 +98,7 @@ public class ModifierReponseForm extends BaseForm {
         btnModifier.addPointerPressedListener(l ->
         {
    //   pr.setReduction(Integer.parseInt(reduction.getText("reduction")));  
- //  pr.setIdProm((idProm.getText()));
+  //pr.setIdR(Integer.parseInt(idR.getText()));
         pr.setTextR1(TextR1.getText());
     pr.setTextR2(TextR2.getText());
      pr.setTextR3(TextR3.getText());
@@ -138,8 +138,7 @@ public class ModifierReponseForm extends BaseForm {
      Container content = BoxLayout.encloseY(
      
      a,f,
-             new FloatingHint(idR),
-             createLineSeparator(),
+            
              new FloatingHint(TextR1),
              createLineSeparator(),
                new FloatingHint(TextR2),
