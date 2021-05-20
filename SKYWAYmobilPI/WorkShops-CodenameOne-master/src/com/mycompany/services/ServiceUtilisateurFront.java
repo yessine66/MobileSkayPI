@@ -13,8 +13,10 @@ import com.codename1.ui.ComboBox;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.TextField;
 import com.codename1.ui.util.Resources;
+import com.mycompany.entities.Utilisateur;
 import com.mycompany.gui.ListUtilisateurForm;
 import com.mycompany.gui.MenuBack;
+import com.mycompany.gui.Session;
 import com.mycompany.utils.statics;
 import java.io.IOException;
 import java.util.Map;
@@ -118,6 +120,19 @@ public class ServiceUtilisateurFront {
                 
                 Map<String,Object> utilisateurl = j.parseJSON(new CharArrayReader(json.toCharArray()));
                 
+                
+                //SESSIONNNNNNNNNNNNN
+                
+                float id = Float.parseFloat(utilisateurl.get("id").toString());
+                Session.setId((int)id);//jibt id ta3 user ly3ml login w sajltha fi session ta3i
+                
+                Session.setPassowrd(utilisateurl.get("password").toString());
+                Session.setUserName(utilisateurl.get("username").toString());
+                Session.setMail(utilisateurl.get("mail").toString());
+                Session.setRole(utilisateurl.get("role").toString());
+                
+
+                System.out.println("Utilisateur connectééééé  : "+Session.getId()+"  "+Session.getUserName()+"  "+Session.getMail()+"  "+Session.getPassowrd()+"  "+Session.getRole());
                 
                 if(utilisateurl.size()>0){
                     //new ListUtilisateurForm(res).show();
