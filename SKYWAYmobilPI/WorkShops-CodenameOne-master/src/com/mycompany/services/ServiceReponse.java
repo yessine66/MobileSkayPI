@@ -94,7 +94,7 @@ public class ServiceReponse {
                 {  
                  
                    Reponse promo = new Reponse();
-//                    int idR = Integer.parseInt(obj.get("idR").toString());
+               float idR = Float.parseFloat(obj.get("idR").toString());
                   String textR1 = obj.get("textR1").toString();
                   String textR2 = obj.get("textR2").toString();
                   String textR3 = obj.get("textR3").toString();
@@ -105,7 +105,7 @@ String strIdStudent = A.substring(6, A.length() - 1);
                       System.out.println("kk2"+strIdStudent);             
                                    
                                       System.out.println("tes3");
-                   //     promo.setIdR((int) idR);
+                    promo.setIdR((int) idR);
                  promo.setTextR1(textR1);
                  promo.setTextR2(textR2);
                  promo.setTextR3(textR3);
@@ -235,8 +235,8 @@ System.out.println("kk"+promo.getNom());
    
    public boolean modifierReponse (Reponse Reponse)
    { 
-    ///Reponseup?idProm=235&codeP=abbbb&reduction=545&dated=7/7/8&datef=1/1/1&idP=256&id=156   
-   String url = statics.BASE_URL+"/reponseupdate??textR1="+Reponse.getTextR1()+"&textR2="+Reponse.getTextR2()+"&textR3="+Reponse.getTextR3()+"&textR4="+Reponse.getTextR4()+"&idQ="+ Reponse.getIdQ()+"&id="+Reponse.getId();
+    
+   String url = statics.BASE_URL+"/reponseupdate?idR="+Reponse.getIdR()+"&textR1="+Reponse.getTextR1()+"&textR2="+Reponse.getTextR2()+"&textR3="+Reponse.getTextR3()+"&textR4="+Reponse.getTextR4()+"&idQ="+ Reponse.getIdQ()+"&id="+Reponse.getId();
         req.addResponseListener(new ActionListener<NetworkEvent>() {
         @Override
         public void actionPerformed(NetworkEvent evt) {

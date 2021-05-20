@@ -6,8 +6,10 @@
 package com.mycompany.gui;
 
 import com.codename1.components.InfiniteProgress;
+import com.codename1.components.MultiButton;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
+import static com.codename1.io.Log.e;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.Component;
@@ -61,10 +63,33 @@ public class ListeQuestionForm extends BaseForm{
         getContentPane().setScrollVisible(false);
         
      
-        tb.addSearchCommand(s -> { 
+        tb.addSearchCommand(s -> {   
+            String text = (String) s.getSource();
+            if (text == null || text.length() == 0) {
+                // clear search
+                for (Component cmp : getContentPane()) {
+                    cmp.setHidden(false);
+                    cmp.setVisible(true);
+                }
+                getContentPane().animateLayout(150);
+            } else {
+                text = text.toLowerCase();
+                for (Component cmp : getContentPane()) {
+                    MultiButton mb = (MultiButton) cmp;
+                    String line1 = mb.getTextLine1();
+                    String line2 = mb.getTextLine2();
+                    boolean show = line1 != null && line1.toLowerCase().indexOf(text) > -1 ||
+                            line2 != null && line2.toLowerCase().indexOf(text) > -1;
+                    mb.setHidden(!show);
+                    mb.setVisible(show);
+
+                }
+                getContentPane().animateLayout(150);
+            }
+        }, 4
  
-        } );
-        
+         );
+       
         
         
         
