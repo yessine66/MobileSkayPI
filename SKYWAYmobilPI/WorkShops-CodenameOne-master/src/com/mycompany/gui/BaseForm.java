@@ -69,7 +69,7 @@ public class BaseForm extends Form {
     protected void addSideMenu(Resources res) {
         Toolbar tb = getToolbar();
         tb.getStyle().setBgColor(155);
-        Image img = res.getImage("backmenu.jpg");
+        Image img = res.getImage("menux.png");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
         }

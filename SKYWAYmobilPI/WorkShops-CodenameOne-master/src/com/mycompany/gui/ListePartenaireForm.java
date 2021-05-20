@@ -151,11 +151,11 @@ public class ListePartenaireForm extends BaseForm{
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
         ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Reclamations", barGroup);
+        RadioButton mesListes = RadioButton.createToggle("Ajouter partenaire", barGroup);
         mesListes.setUIID("SelectBar");
-        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
+        RadioButton liste = RadioButton.createToggle("Autre", barGroup);
         liste.setUIID("SelectBar");
-        RadioButton partage = RadioButton.createToggle("Reclamer", barGroup);
+        RadioButton partage = RadioButton.createToggle("Mes partenaires", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
@@ -470,12 +470,12 @@ lmodifier.setTextPosition(LEFT);
  cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(
          
           
-         BoxLayout.encloseX(nomText),
+         BoxLayout.encloseX(nomText,lmodifier,lsupprimer),
           BoxLayout.encloseX(domaineText),
          // BoxLayout.encloseX(datedText),
           // BoxLayout.encloseX(datefText),
            BoxLayout.encloseX(datepText,idpText) ,
-         BoxLayout.encloseX(mai,lmodifier,lsupprimer)) );
+         BoxLayout.encloseX(mai)) );
  
  
  

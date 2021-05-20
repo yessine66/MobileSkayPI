@@ -92,7 +92,7 @@ public class ServicePromotion {
                
     ArrayList <Promotion> result = new ArrayList<>();
     
-    String url =statics.BASE_URL+"/promotiondisplayi";
+    String url =statics.BASE_URL+"/promotionlis";
     req.setUrl(url);
     
       req.addResponseListener(new ActionListener<NetworkEvent>() {

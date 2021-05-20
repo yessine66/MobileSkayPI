@@ -140,11 +140,11 @@ public class ListePromotionForm extends BaseForm{
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
         ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Reclamations", barGroup);
+        RadioButton mesListes = RadioButton.createToggle("Ajputer promotion", barGroup);
         mesListes.setUIID("SelectBar");
         RadioButton liste = RadioButton.createToggle("Autres", barGroup);
         liste.setUIID("SelectBar");
-        RadioButton partage = RadioButton.createToggle("Reclamer", barGroup);
+        RadioButton partage = RadioButton.createToggle("Mes promotions", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 

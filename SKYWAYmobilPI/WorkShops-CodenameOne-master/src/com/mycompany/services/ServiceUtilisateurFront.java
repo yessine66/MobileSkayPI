@@ -14,6 +14,7 @@ import com.codename1.ui.Dialog;
 import com.codename1.ui.TextField;
 import com.codename1.ui.util.Resources;
 import com.mycompany.gui.ListUtilisateurForm;
+import com.mycompany.gui.MenuBack;
 import com.mycompany.utils.statics;
 import java.io.IOException;
 import java.util.Map;
@@ -119,7 +120,8 @@ public class ServiceUtilisateurFront {
                 
                 
                 if(utilisateurl.size()>0){
-                    new ListUtilisateurForm(res).show();
+                    //new ListUtilisateurForm(res).show();
+                    new MenuBack(res,res.getImage("menux.png")).show();
                 }
             }
             
