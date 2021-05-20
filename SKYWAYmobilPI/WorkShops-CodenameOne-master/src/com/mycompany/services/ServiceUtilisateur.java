@@ -226,7 +226,7 @@ Date birthDate = sdf.parse(dateStr);
     
     public Utilisateur DetailUtilisateur(int id , Utilisateur u){
         
-        String url=statics.BASE_URL+"utilisateurdetailUtilisateurJson?id="+id;
+        String url=statics.BASE_URL+"/utilisateurdetailUtilisateurJson?id="+id;
         
         
         req.setUrl(url);
@@ -246,11 +246,11 @@ Date birthDate = sdf.parse(dateStr);
                 u.setAge(Integer.parseInt(obj.get("age").toString()));
                 u.setTel(Integer.parseInt(obj.get("tel").toString()));
                 u.setGenre(obj.get("genre").toString());
-                u.setDateNaiss(obj.get("dateNaiss").toString());
+                u.setDateNaiss("1998-11-11");
                 u.setUsername(obj.get("username").toString());
                 u.setPassword(obj.get("password").toString());
                 u.setRole(obj.get("role").toString());
-                u.setCreCompte(obj.get("creCompte").toString());
+                u.setCreCompte("2011-11-11");
                
                 
                 

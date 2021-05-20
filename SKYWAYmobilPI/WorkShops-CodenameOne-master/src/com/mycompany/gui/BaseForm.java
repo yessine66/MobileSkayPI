@@ -83,16 +83,17 @@ public class BaseForm extends Form {
                         new Label(res.getImage("smily.png"), "PictureWhiteBackgrond"))
         ));
         
-        tb.addMaterialCommandToSideMenu("Newsfeed", FontImage.MATERIAL_UPDATE, e -> new MenuBack(res,res.getImage("menux.png")).show());
+        tb.addMaterialCommandToSideMenu("Menu", FontImage.MATERIAL_UPDATE, e -> new MenuBack(res,res.getImage("menux.png")).show());
         tb.addMaterialCommandToSideMenu("Accounts", FontImage.MATERIAL_ASSIGNMENT_IND, e -> new ListUtilisateurForm(res).show());
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_ACCOUNT_CIRCLE, e -> new ProfileForm(res).show());
-        tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show());
+        
           tb.addMaterialCommandToSideMenu("ajouter partenaire", FontImage.MATERIAL_UPDATE, e -> new AjouterPartenaire(res).show());
         tb.addMaterialCommandToSideMenu("Liste Partenaires", FontImage.MATERIAL_SETTINGS, e -> new ListePartenaireForm(res).show());
-        tb.addMaterialCommandToSideMenu("contact", FontImage.MATERIAL_EXIT_TO_APP, e -> new ContactP(res).show());
+        tb.addMaterialCommandToSideMenu("contact", FontImage.MATERIAL_MARK_EMAIL_READ, e -> new ContactP(res).show());
               tb.addMaterialCommandToSideMenu("stat", FontImage.MATERIAL_EXIT_TO_APP, e -> new CatDomaine(res).show());
                tb.addMaterialCommandToSideMenu("ajouter promo", FontImage.MATERIAL_UPDATE, e -> new AjouterPromotion(res).show());
-        tb.addMaterialCommandToSideMenu("Liste promo", FontImage.MATERIAL_SETTINGS, e -> new ListePromotionForm(res).show());
+        tb.addMaterialCommandToSideMenu("Liste promo", FontImage.MATERIAL_LOCAL_FIRE_DEPARTMENT, e -> new ListePromotionForm(res).show());
+        tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show());
         
         
     }

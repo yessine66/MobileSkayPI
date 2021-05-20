@@ -50,6 +50,8 @@ import java.util.Date;
 public class ListUtilisateurForm extends BaseForm{
     
     Form current;
+    
+    Utilisateur userixo ;
 
 public ListUtilisateurForm (Resources res){
      super("Newsfeed",BoxLayout.y()); //
@@ -65,6 +67,30 @@ public ListUtilisateurForm (Resources res){
         
         tb.addSearchCommand(e -> {
             
+//            String text=(String)e.getSource();
+//           // int x=Integer.parseInt(text);
+//            System.out.println("\n\n\n**********\n"+text);
+//            
+//            int taille =text.length();
+//           System.out.println("taille " + taille);
+//            if(taille !=0){
+//                if(text.substring(text.length() - 1).equals(" ")){
+//                    
+//                      text = text.substring(0, text.length() - 1);
+//                    
+//                    userixo=ServiceUtilisateur.getInstance().DetailUtilisateur(240, userixo);
+//                    
+//                    
+//                   // Dialog.show(text, userixo.getMail(), "OK",null);  
+//                    
+//                }
+//               
+//                
+//            }
+//           // else if(taille < 2)
+//            
+//
+//            
             
         });
         
@@ -114,7 +140,7 @@ public ListUtilisateurForm (Resources res){
                 rbs[ii].setSelected(true);
             }
         });
-
+        
         Component.setSameSize(radioContainer, s1, s2);
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
@@ -147,7 +173,7 @@ public ListUtilisateurForm (Resources res){
             refreshTheme();
         });
         
-                
+
         add(LayeredLayout.encloseIn(
                 GridLayout.encloseIn(2, mesListes, partage),
                 FlowLayout.encloseBottom(arrow)
@@ -222,7 +248,7 @@ public ListUtilisateurForm (Resources res){
                         overlay,
                         BorderLayout.south(
                         BoxLayout.encloseY(
-                        new SpanLabel(text, "LargeWhiteText"),
+                        new SpanLabel(text, "LargeBlackText"),
                                         spacer
                         ))
                 );

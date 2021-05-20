@@ -156,7 +156,7 @@ public class AjouterUtilisateurForm extends BaseForm{
         arrow.setVisible(false);
         addShowListener(e -> {
             arrow.setVisible(true);
-            updateArrowPosition(partage, arrow);
+            updateArrowPosition(mesListes, arrow);
         });
         bindButtonSelection(mesListes, arrow);
        // bindButtonSelection(liste, arrow);
