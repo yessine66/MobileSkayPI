@@ -358,7 +358,7 @@ getContentPane().animateLayout(250);
 
  
   // Label idP = new Label ("Partenaire"+promo.getIdP(),"NewsTopLine2");
-    Label idQ = new Label ("Question : "+promo.getNom(),"NewsTopLine2");
+    Label idQ = new Label ("Question  "+promo.getNom(),"NewsTopLine2");
   createLineSeparator();
      
      
@@ -481,8 +481,10 @@ new ModifierReponseForm(res,promo).show();
          
          
          BoxLayout.encloseX(idR),
-        BoxLayout.encloseX(TextR1,TextR2,TextR3,TextR4),
-          
+        BoxLayout.encloseX(TextR1),
+         BoxLayout.encloseX(TextR2),
+         BoxLayout.encloseX(TextR3),
+         BoxLayout.encloseX(TextR4),
          BoxLayout.encloseX(idQ),
                 BoxLayout.encloseX(lmodifier,lsupprimer)) );
  
