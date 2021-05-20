@@ -90,9 +90,12 @@ public class BaseForm extends Form {
           tb.addMaterialCommandToSideMenu("ajouter partenaire", FontImage.MATERIAL_UPDATE, e -> new AjouterPartenaire(res).show());
         tb.addMaterialCommandToSideMenu("Liste Partenaires", FontImage.MATERIAL_SETTINGS, e -> new ListePartenaireForm(res).show());
         tb.addMaterialCommandToSideMenu("contact", FontImage.MATERIAL_MARK_EMAIL_READ, e -> new ContactP(res).show());
-              tb.addMaterialCommandToSideMenu("stat", FontImage.MATERIAL_EXIT_TO_APP, e -> new CatDomaine(res).show());
-               tb.addMaterialCommandToSideMenu("ajouter promo", FontImage.MATERIAL_UPDATE, e -> new AjouterPromotion(res).show());
+        tb.addMaterialCommandToSideMenu("stat", FontImage.MATERIAL_EXIT_TO_APP, e -> new CatDomaine(res).show());
+        tb.addMaterialCommandToSideMenu("ajouter promo", FontImage.MATERIAL_UPDATE, e -> new AjouterPromotion(res).show());
         tb.addMaterialCommandToSideMenu("Liste promo", FontImage.MATERIAL_LOCAL_FIRE_DEPARTMENT, e -> new ListePromotionForm(res).show());
+        
+        tb.addMaterialCommandToSideMenu("Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> System.out.println("\n\n ibtiiheellll"));
+        
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show());
         
         

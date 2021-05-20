@@ -66,7 +66,7 @@ public ListUtilisateurForm (Resources res){
         super.addSideMenu(res);
         
         tb.addSearchCommand(e -> {
-            
+//            
 //            String text=(String)e.getSource();
 //           // int x=Integer.parseInt(text);
 //            System.out.println("\n\n\n**********\n"+text);
