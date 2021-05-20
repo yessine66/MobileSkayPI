@@ -53,12 +53,16 @@ public class ModifierReponseForm extends BaseForm {
         
       //  super.addSideMenu (res);
         
-       //  TextField idR= new TextField(String.valueOf(pr.getIdR()), "Id",20,TextField.ANY);
+      TextField idR= new TextField(String.valueOf(pr.getIdR()), "Id",20,TextField.ANY);
+        System.out.println("ID RRR MELOWEL li bech nmodifwh "+pr.getIdR());
       TextField TextR1= new TextField(pr.getTextR1(), "Bonne réponse ",20,TextField.ANY);
       TextField TextR2= new TextField(pr.getTextR2(), " premiere mauvaise reponse ",20,TextField.ANY);
       TextField TextR3= new TextField(pr.getTextR3(), "deuxieme mauvaise réponse ",20,TextField.ANY);
       TextField TextR4= new TextField(pr.getTextR4(), "troixieme mauvaise réponse ",20,TextField.ANY);
-  
+        System.out.println(TextR1.getText());
+        System.out.println(TextR2.getText());
+        System.out.println(TextR3.getText());
+        System.out.println(TextR4.getText());
            for (Question p : partenaires) {
            // comboQ.addItem(p.getCodeP());
               comboQ.addItem(p.getIdQ());
@@ -73,7 +77,7 @@ public class ModifierReponseForm extends BaseForm {
    
         
         
-     //idR.setUIID("NewTopLine");
+     idR.setUIID("NewTopLine");
        TextR1.setUIID("NewTopLine");
         TextR2.setUIID("NewTopLine");
        TextR3.setUIID("NewTopLine"); 
@@ -89,7 +93,7 @@ public class ModifierReponseForm extends BaseForm {
  //   idR.setSingleLineTextArea(true);   
            //idP.setSingleLineTextArea(true);
         
-        
+    
         
         
         Button btnModifier = new Button ("Modifier");
@@ -99,11 +103,17 @@ public class ModifierReponseForm extends BaseForm {
         {
    //   pr.setReduction(Integer.parseInt(reduction.getText("reduction")));  
   //pr.setIdR(Integer.parseInt(idR.getText()));
+              System.out.println("bech anmlou modif IDDDDDDDDDDDDDDDD"+idR.getText());
+            System.out.println("ahna tawa kbal settttttttt   HEDHA text r1"+TextR1.getText());
         pr.setTextR1(TextR1.getText());
+        System.out.println("ahna tawa baed settttttttt   HEDHA text r1"+TextR1.getText());
     pr.setTextR2(TextR2.getText());
      pr.setTextR3(TextR3.getText());
       pr.setTextR4(TextR4.getText());
-        
+            System.out.println(TextR1.getText());
+        System.out.println(TextR2.getText());
+        System.out.println(TextR3.getText());
+        System.out.println(TextR4.getText());  
           int s = (Integer)comboQ.getSelectedItem();
              // promo.setIdP(s.getIdP());
               pr.setIdQ(s);
@@ -112,7 +122,8 @@ public class ModifierReponseForm extends BaseForm {
   // appel fct modif service
   if (ServiceReponse.getInstance().modifierReponse(pr))
   {  
-       
+              System.out.println("ahna tawa baed appel fct modier reponse    HEDHA text r1"+TextR1.getText());
+
       new ListeReponseForm(res).show();
   
   }

@@ -37,7 +37,6 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
-import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.mycompany.entities.Reponse;
 import com.mycompany.services.ServiceReponse;
@@ -59,14 +58,42 @@ public class ListeReponseForm extends BaseForm{
         
         current=this;
         setToolbar(tb);
-  
+          
+           tb.addSearchCommand(s -> {   
+            String text = (String) s.getSource();
+            if (text == null || text.length() == 0) {
+                // clear search
+                for (Component cmp : getContentPane()) {
+                    cmp.setHidden(false);
+                    cmp.setVisible(true);
+                }
+                getContentPane().animateLayout(150);
+            } else {
+                text = text.toLowerCase();
+                for (Component cmp : getContentPane()) {
+                    MultiButton mb= new MultiButton();
+                  mb = (MultiButton) cmp;
+                    String line1 = mb.getTextLine1();
+                    String line2 = mb.getTextLine2();
+                    boolean show = line1 != null && line1.toLowerCase().indexOf(text) > -1 ||
+                            line2 != null && line2.toLowerCase().indexOf(text) > -1;
+                    mb.setHidden(!show);
+                    mb.setVisible(show);
+
+                }
+                getContentPane().animateLayout(150);
+            }
+        }
+ 
+         );
       getTitleArea().setUIID("Container");
-   
+    
+      setTitle ("AJouter Reponse");
         getContentPane().setScrollVisible(false);
         
         
       
-  /*      
+        /*       
   TextField searchField;
 searchField = new TextField("", "Articles' List");
 searchField.getHintLabel().setUIID("Title");
@@ -84,8 +111,7 @@ cmp.setVisible(true);
 t = t.toLowerCase();
 for(Component cmp: getContentPane()) {
 //tekhou el val ta3 el champ : champ li 3malt 3lih el recherche type span label (emplacement : container->container->spanlabel )
-//String val = ((Label) ((Container)((Container) ((Container) ((Container) ((Container)((Container)((Container)((Container)((Container)((Container)((Container) cmp).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getText();
-String val = ((Label) ((Container)((Container) ((Container)((Container) ((Container) ((Container)((Container) ((Container)((Container)((Container) ((Container) cmp).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getText();
+String val = ((SpanLabel) ((Container)((Container) ((Tabs) ((Container) cmp).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getComponentAt(0)).getText();
 System.out.println( val );
 boolean show = val != null && val.toLowerCase().indexOf(t) > -1;
 cmp.setHidden(!show);
@@ -94,8 +120,8 @@ cmp.setVisible(show);
 }
 getContentPane().animateLayout(250);
 });
+        */
         
-       */ 
         
         Tabs swipe = new Tabs();
         Label s1= new Label ();
@@ -308,23 +334,15 @@ getContentPane().animateLayout(250);
     }
 //   private void addButton(Image img ,String codeP, int reduction,String dated,String datef,Reponse promo,Resources res)
     private void addButton(Image img, Reponse promo,Resources res) {
-       
-
-
-
         int height = Display.getInstance().convertToPixels(11.5f);
             int width= Display.getInstance().convertToPixels(14f);
             
             Button image = new Button(img.fill(width,height));
-               Container cnt = BorderLayout.west(image);
-                      Container o = new Container ();
-
+            
             image.setUIID("Label");
- 
-
-
+            
       //  Container cnt= new Container ();
-   
+      Container cnt = BorderLayout.west(image);
        // Container o = new Container ();
       
   /*   TextArea ta = new TextArea (codeP);
@@ -389,7 +407,6 @@ else
     
     
     }
-               
     
 }
 
@@ -438,48 +455,7 @@ new ModifierReponseForm(res,promo).show();
 
 
 
- Toolbar.setGlobalToolbar(true);
-          Toolbar tb = new Toolbar(true);
-       
-        setToolbar(tb); 
-Style s = UIManager.getInstance().getComponentStyle("Title");
 
-//orm hi = new Form("Toolbar", new BoxLayout(BoxLayout.Y_AXIS));
-TextField searchField = new TextField("", "Toolbar Search"); // <1>
-searchField.getHintLabel().setUIID("Title");
-searchField.setUIID("Title");
-searchField.getAllStyles().setAlignment(Component.LEFT);
-tb.setTitleComponent(searchField);
-FontImage searchIcon = FontImage.createMaterial(FontImage.MATERIAL_SEARCH, s);
-searchField.addDataChangeListener((i1, i2) -> { // <2>
-    String t = searchField.getText();
-    if(t.length() < 1) {
-        for(Component cmp : cnt) {
-            cmp.setHidden(false);
-            cmp.setVisible(true);
-        }
-    } else {
-        t = t.toLowerCase();
-        for(Component cmp : cnt) {
-            String val = null;
-            if(cmp instanceof Label) {
-                val = ((Label)cmp).getText();
-            } else {
-                if(cmp instanceof TextArea) {
-                    val = ((TextArea)cmp).getText();
-                } else {
-                    val = (String)cmp.getPropertyValue("text");
-                }
-            }
-            boolean show = val != null && val.toLowerCase().indexOf(t) > -1;
-            cmp.setHidden(!show); // <3>
-            cmp.setVisible(show);
-        }
-    }
-    cnt.animateLayout(250);
-    
-
-});
 
 
 

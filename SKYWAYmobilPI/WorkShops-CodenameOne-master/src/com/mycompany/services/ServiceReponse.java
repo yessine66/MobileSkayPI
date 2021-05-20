@@ -235,9 +235,16 @@ System.out.println("kk"+promo.getNom());
    
    public boolean modifierReponse (Reponse Reponse)
    { 
-    
-   String url = statics.BASE_URL+"/reponseupdate?idR="+Reponse.getIdR()+"&textR1="+Reponse.getTextR1()+"&textR2="+Reponse.getTextR2()+"&textR3="+Reponse.getTextR3()+"&textR4="+Reponse.getTextR4()+"&idQ="+ Reponse.getIdQ()+"&id="+Reponse.getId();
-        req.addResponseListener(new ActionListener<NetworkEvent>() {
+
+ String url = statics.BASE_URL+"/reponseupdate?idR="+Reponse.getIdR()+"&textR1="+Reponse.getTextR1()+"&textR2="+Reponse.getTextR2()+"&textR3="+Reponse.getTextR3()+"&textR4="+Reponse.getTextR4()+"&idQ="+ Reponse.getIdQ()+"&id="+Reponse.getId();
+     
+
+req.setUrl(url);
+
+
+
+// String //url = statics.BASE_URL+"/reponseupdate?idR=8&textR1=aloooooooooooo&textR2=yessine&textR3=nour&textR4=kkj&idQ=41&id=1";
+   req.addResponseListener(new ActionListener<NetworkEvent>() {
         @Override
         public void actionPerformed(NetworkEvent evt) {
  

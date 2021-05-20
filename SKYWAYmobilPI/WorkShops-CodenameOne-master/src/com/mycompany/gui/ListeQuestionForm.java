@@ -40,6 +40,8 @@ import com.codename1.ui.util.Resources;
 import com.mycompany.entities.Question;
 import com.mycompany.services.ServiceQuestion;
 import java.util.ArrayList;
+import java.util.List;
+//import org.jcp.xml.dsig.internal.dom.Utils;
 
 /**
  *
@@ -90,7 +92,12 @@ public class ListeQuestionForm extends BaseForm{
  
          );
        
-        
+       /* Button k = new Button("Recherche");
+        k.setUIID("SelectBar");
+        k.addActionListener(e -> {
+            new RechercheQ(res).show();
+        });    
+        */
         
         
         
@@ -179,14 +186,17 @@ public class ListeQuestionForm extends BaseForm{
         });
 
         
-      
-       
+    /*  List<Question> series = Utils.getList();
+        for (int i = 0; i < series.size(); i++) {
+            System.out.println(series.get(i));
+            this.add(addSeriesHolder(series.get(i)));
+    */   
         
      ArrayList <Question>list =ServiceQuestion.getInstance().afficherQuestion();
  
   
  for (Question promo: list )
- {
+ { 
      String urlImage="quiz.png";
      Image placeHolder =Image.createImage(12,90);
      EncodedImage enc= EncodedImage.createFromImage(placeHolder, false);
@@ -306,6 +316,8 @@ public class ListeQuestionForm extends BaseForm{
   /*   TextArea ta = new TextArea (codeP);
      ta.setUIID("NewsTopLine");
      ta.setEditable (false);*/
+  
+    List<Question> series = new ArrayList<>();
    Label idQ = new Label ("id: "+promo.getIdQ(),"NewsTopLine2");
   Label textQ = new Label ("La question: "+promo.getTextQ(),"NewsTopLine2");
   Label nbrPoint = new Label ("score: "+promo.getNbrPoint(),"NewsTopLine2");
