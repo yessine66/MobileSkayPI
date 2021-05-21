@@ -99,13 +99,13 @@ public class ActivateForm extends BaseForm {
         resend.addActionListener(l-> {
             System.out.println("\n\n\n vvvvvvvotre numeroooo esttt  : "+code.getText());
             
-             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+          Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         
 
        Message message = Message.creator(new PhoneNumber("+21652635795"), new PhoneNumber("+14133442783"), "Your Password is : "+"zaezaesdfsdffsfef32.0").create();
             
         });
         
-    }
     
-}
+    
+        }}

@@ -193,7 +193,7 @@ public class ServiceQuestion {
    public boolean modifierQuestion (Question Question)
    { 
     ///Questionup?idProm=235&codeP=abbbb&reduction=545&dated=7/7/8&datef=1/1/1&idP=256&id=156   
-   String url = statics.BASE_URL+"/questionupdate?idQ="+Question.getIdQ()+"&textQ="+Question.getTextQ()+"&nameT="+ Question.getNameT()+"&nbrPoint="+2;     
+   String url = statics.BASE_URL+"/questionupdate?idQ="+Question.getIdQ()+"&textQ="+Question.getTextQ()+"&nameT="+Question.getNameT()+"&nbrPoint=3";     
     req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
         @Override

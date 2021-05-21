@@ -9,6 +9,7 @@ import com.codename1.components.InfiniteProgress;
 import com.codename1.components.MultiButton;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
+import com.codename1.components.ToastBar;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.Component;
@@ -39,6 +40,7 @@ import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import com.mycompany.entities.Reponse;
+import com.mycompany.gui.RechercheQ;
 import com.mycompany.services.ServiceReponse;
 import java.util.ArrayList;
 
@@ -58,39 +60,37 @@ public class ListeReponseForm extends BaseForm{
         
         current=this;
         setToolbar(tb);
-          
-           tb.addSearchCommand(s -> {   
-            String text = (String) s.getSource();
-            if (text == null || text.length() == 0) {
+        super.addSideMenu(res);
+        
+        tb.addSearchCommand(e -> {
+            String text = (String)e.getSource();
+                if(text == null || text.length() == 0) {
                 // clear search
-                for (Component cmp : getContentPane()) {
-                    cmp.setHidden(false);
-                    cmp.setVisible(true);
-                }
+                    for(Component cmp : current.getContentPane()) {
+                        cmp.setHidden(false);
+                        cmp.setVisible(true);
+                    }
                 getContentPane().animateLayout(150);
             } else {
-                text = text.toLowerCase();
-                for (Component cmp : getContentPane()) {
-                    MultiButton mb= new MultiButton();
-                  mb = (MultiButton) cmp;
-                    String line1 = mb.getTextLine1();
-                    String line2 = mb.getTextLine2();
-                    boolean show = line1 != null && line1.toLowerCase().indexOf(text) > -1 ||
+                    text = text.toLowerCase();
+                    for(Component cmp : current.getContentPane()) {
+                        if(cmp instanceof MultiButton) {
+                            MultiButton mb = (MultiButton)cmp;
+                            String line1 = mb.getTextLine1();
+                            String line2 = mb.getTextLine2();
+                            boolean show = line1 != null && line1.toLowerCase().indexOf(text) > -1 ||
                             line2 != null && line2.toLowerCase().indexOf(text) > -1;
-                    mb.setHidden(!show);
-                    mb.setVisible(show);
-
-                }
-                getContentPane().animateLayout(150);
-            }
+                            mb.setHidden(!show);
+                            mb.setVisible(show);
+                    }}
+                        getContentPane().animateLayout(150);
         }
- 
-         );
+        });
+      
       getTitleArea().setUIID("Container");
     
-      setTitle ("AJouter Reponse");
-        getContentPane().setScrollVisible(false);
-        super.addSideMenu(res);
+      
+        
         
       
         /*       
@@ -173,8 +173,9 @@ getContentPane().animateLayout(250);
     ButtonGroup barGroup = new ButtonGroup();
         RadioButton mesListes = RadioButton.createToggle("Mes Reponses", barGroup);
         mesListes.setUIID("SelectBar");
-//        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
-//        liste.setUIID("SelectBar");
+  // RadioButton liste = RadioButton.createToggle("Recherche", barGroup);
+
+    //    liste.setUIID("SelectBar");
         RadioButton partage = RadioButton.createToggle("Ajouter", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
@@ -188,7 +189,7 @@ getContentPane().animateLayout(250);
 
             refreshTheme();
         });
-        
+       
                 partage.addActionListener((e) -> {
                InfiniteProgress ip = new InfiniteProgress();
         final Dialog ipDlg = ip.showInifiniteBlocking();
@@ -211,7 +212,7 @@ getContentPane().animateLayout(250);
             updateArrowPosition(partage, arrow);
         });
         bindButtonSelection(mesListes, arrow);
-       // bindButtonSelection(liste, arrow);
+        //bindButtonSelection(liste, arrow);
         bindButtonSelection(partage, arrow);
         // special case for rotation
         addOrientationListener(e -> {
@@ -451,7 +452,7 @@ lmodifier.setTextPosition(LEFT);
 
 //clixk updatze btn
  lmodifier.addPointerPressedListener(l -> {
-
+  
 
 new ModifierReponseForm(res,promo).show();
 

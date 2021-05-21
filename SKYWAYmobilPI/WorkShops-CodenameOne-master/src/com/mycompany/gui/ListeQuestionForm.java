@@ -9,6 +9,7 @@ import com.codename1.components.InfiniteProgress;
 import com.codename1.components.MultiButton;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
+import com.codename1.components.ToastBar;
 import static com.codename1.io.Log.e;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
@@ -152,8 +153,8 @@ public class ListeQuestionForm extends BaseForm{
   ButtonGroup barGroup = new ButtonGroup();
         RadioButton mesListes = RadioButton.createToggle("Mes Reponses", barGroup);
         mesListes.setUIID("SelectBar");
-//        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
-//        liste.setUIID("SelectBar");
+   RadioButton liste = RadioButton.createToggle("Statistique", barGroup);
+   liste.setUIID("SelectBar");
         RadioButton partage = RadioButton.createToggle("Ajouter", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
@@ -164,6 +165,14 @@ public class ListeQuestionForm extends BaseForm{
         final Dialog ipDlg = ip.showInifiniteBlocking();
         
         new ListeReponseForm(res).show();
+
+            refreshTheme();
+        });
+        liste.addActionListener((e) -> {
+               InfiniteProgress ip = new InfiniteProgress();
+        final Dialog ipDlg = ip.showInifiniteBlocking();
+        
+        new StatQ(res).show();
 
             refreshTheme();
         });
@@ -178,7 +187,7 @@ public class ListeQuestionForm extends BaseForm{
         });
 
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(2, mesListes, partage),
+                GridLayout.encloseIn(3, mesListes, partage,liste),
                 
                 FlowLayout.encloseBottom(arrow)
         ));
@@ -189,7 +198,7 @@ public class ListeQuestionForm extends BaseForm{
             updateArrowPosition(partage, arrow);
         });
         bindButtonSelection(mesListes, arrow);
-        //bindButtonSelection(liste, arrow);
+        bindButtonSelection(liste, arrow);
         bindButtonSelection(partage, arrow);
         // special case for rotation
         addOrientationListener(e -> {
@@ -312,6 +321,10 @@ public class ListeQuestionForm extends BaseForm{
         
         
     }
+      private void addStringValue(String s, Component v) {
+       add(BorderLayout.west(new Label(s,"PaddedLabel")).add(BorderLayout.CENTER,v));
+       add (createLineSeparator(0xeeeeee));
+    }
   private void addButton(Image img, Question promo,Resources res) {
         int height = Display.getInstance().convertToPixels(11.5f);
             int width= Display.getInstance().convertToPixels(14f);
@@ -390,6 +403,7 @@ else
 
  });
  
+    
 
  //update icon 
  
@@ -408,11 +422,12 @@ lmodifier.setTextPosition(LEFT);
 //clixk updatze btn
  lmodifier.addPointerPressedListener(l -> {
 
-
+ 
 new ModifierQuestionForm(res,promo).show();
 
+
  });
- 
+    
 
 
 
@@ -438,7 +453,7 @@ new ModifierQuestionForm(res,promo).show();
  
  
      add(cnt);
-   
+  
     }
     
  
