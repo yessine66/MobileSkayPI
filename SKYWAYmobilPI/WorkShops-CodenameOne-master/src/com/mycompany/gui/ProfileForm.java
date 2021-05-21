@@ -68,7 +68,7 @@ public class ProfileForm extends BaseForm {
         facebook.setTextPosition(BOTTOM);
         twitter.setTextPosition(BOTTOM);
         
-        add(LayeredLayout.encloseIn(
+      /*  add(LayeredLayout.encloseIn(
                 sl,
                 BorderLayout.south(
                     GridLayout.encloseIn(3, 
@@ -78,21 +78,24 @@ public class ProfileForm extends BaseForm {
                             twitter
                     )
                 )
-        ));
+        ));*/
 
-        TextField username = new TextField("sandeep");
+        TextField username = new TextField(Session.getUserName());
         username.setUIID("TextFieldBlack");
         addStringValue("Username", username);
 
-        TextField email = new TextField("sandeep@gmail.com", "E-Mail", 20, TextField.EMAILADDR);
+        TextField email = new TextField(Session.getMail(), "E-Mail", 20, TextField.EMAILADDR);
         email.setUIID("TextFieldBlack");
-        addStringValue("E-Mail", email);
+        addStringValue("Mail", email);
         
-        TextField password = new TextField("sandeep", "Password", 20, TextField.PASSWORD);
+        TextField password = new TextField(Session.getPassowrd());
         password.setUIID("TextFieldBlack");
         addStringValue("Password", password);
+                TextField role = new TextField(Session.getRole());
+        role.setUIID("TextFieldBlack");
+        addStringValue("Role", role);
 
-        CheckBox cb1 = CheckBox.createToggle(res.getImage("on-off-off.png"));
+    /*    CheckBox cb1 = CheckBox.createToggle(res.getImage("on-off-off.png"));
         cb1.setUIID("Label");
         cb1.setPressedIcon(res.getImage("on-off-on.png"));
         CheckBox cb2 = CheckBox.createToggle(res.getImage("on-off-off.png"));
@@ -100,7 +103,7 @@ public class ProfileForm extends BaseForm {
         cb2.setPressedIcon(res.getImage("on-off-on.png"));
         
         addStringValue("Facebook", FlowLayout.encloseRightMiddle(cb1));
-        addStringValue("Twitter", FlowLayout.encloseRightMiddle(cb2));
+        addStringValue("Twitter", FlowLayout.encloseRightMiddle(cb2));*/
     }
     
     private void addStringValue(String s, Component v) {
