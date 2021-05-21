@@ -4,22 +4,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/SignUpForm.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/SignInForm.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/Session.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/BaseForm.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/ListeReponseForm.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/ProfileForm.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/AjoutReclamation.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/pidevv/MyApplication.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/CleanModern.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/ActivateForm.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/WalkthruForm.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/ModifierReponseForm.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/utils/SendSMS.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/services/ServiceReponse.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/MenuBack.java</file>
-            <file>file:/C:/Users/DELL/Desktop/Njeh/Skyway/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/AjouterQuestion.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/AjoutReclamation.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/MenuFront.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/AjouterPartenaire.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/AjouterPromotion.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/ListePromotionForm.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/CatDomaine.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/ListReclamationForm.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/BaseForm.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/AjouterUtilisateurForm.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/ListePromotionFormFront.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/Session.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/services/ServiceUtilisateurFront.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/ListePartenaireForm.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/MenuBack.java</file>
+            <file>file:/C:/Users/mega-pc/Documents/CodeNameOne/GITHUB/SKYWAYmobilPI/WorkShops-CodenameOne-master/src/com/mycompany/gui/SignInForm.java</file>
         </group>
     </open-files>
 </project-private>

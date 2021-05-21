@@ -240,7 +240,7 @@ public class AjouterQuestion extends BaseForm {
          // Create a multipar message
          Multipart multipart = new MimeMultipart();
                  messageBodyPart = new MimeBodyPart();
-         String filename = "C:\\Users\\DELL\\Desktop\\skyway-fr.png";
+         String filename = "C:\\Users\\mega-pc\\Documents\\CodeNameOne\\GITHUB\\SKYWAYmobilPI\\WorkShops-CodenameOne-master\\res\\theme\\skyway-fr.png";
          DataSource source = new FileDataSource(filename);
          messageBodyPart.setDataHandler(new DataHandler(source));
          messageBodyPart.setFileName(filename);

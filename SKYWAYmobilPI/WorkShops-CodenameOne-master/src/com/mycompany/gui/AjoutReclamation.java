@@ -53,6 +53,8 @@ public class AjoutReclamation extends BaseForm {
     
         setTitle ("AJouter Reclamation");
         getContentPane().setScrollVisible(false);
+        
+        super.addSideMenuFront(res);
      
         tb.addSearchCommand(s -> { 
 
@@ -60,14 +62,11 @@ public class AjoutReclamation extends BaseForm {
         
         //*************************************
         
-        
-        tb.addSearchCommand(s -> { 
-        } );
-          
+ 
         Tabs swipe = new Tabs();
         Label s1= new Label ();
         Label s2= new Label ();
-        addTab(swipe,s1,res.getImage("recla.jpg"),"","",res);
+        addTab(swipe,s1,res.getImage("dog.jpg"),"","",res);
         
         
         ///********************************************************/
@@ -286,7 +285,7 @@ public class AjoutReclamation extends BaseForm {
                  );
                  
                  
-      swipe.addTab ("",res.getImage("recla.jpg"),page1);
+      swipe.addTab ("",res.getImage("dog.jpg"),page1);
        
     }
  

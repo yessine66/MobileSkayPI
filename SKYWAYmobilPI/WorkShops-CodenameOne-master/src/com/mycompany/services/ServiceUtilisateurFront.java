@@ -16,6 +16,7 @@ import com.codename1.ui.util.Resources;
 import com.mycompany.entities.Utilisateur;
 import com.mycompany.gui.ListUtilisateurForm;
 import com.mycompany.gui.MenuBack;
+import com.mycompany.gui.MenuFront;
 import com.mycompany.gui.Session;
 import com.mycompany.utils.statics;
 import java.io.IOException;
@@ -136,7 +137,12 @@ public class ServiceUtilisateurFront {
                 
                 if(utilisateurl.size()>0){
                     //new ListUtilisateurForm(res).show();
-                    new MenuBack(res,res.getImage("menux.png")).show();
+                    
+                    if(Session.getRole().equals("admin"))
+                        new MenuBack(res,res.getImage("menux.png")).show();
+                    else
+                        new MenuFront(res,res.getImage("menux.png")).show();
+                    
                 }
             }
             

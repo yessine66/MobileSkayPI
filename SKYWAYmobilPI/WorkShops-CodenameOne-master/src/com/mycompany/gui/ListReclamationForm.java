@@ -58,6 +58,8 @@ public class ListReclamationForm extends BaseForm {
     
         setTitle ("AJouter Reclamation");
         getContentPane().setScrollVisible(false);
+        
+        super.addSideMenuFront(res);
      
         tb.addSearchCommand(s -> { 
 
@@ -66,13 +68,12 @@ public class ListReclamationForm extends BaseForm {
         //*************************************
         
         
-        tb.addSearchCommand(s -> { 
-        } );
+
           
         Tabs swipe = new Tabs();
         Label s1= new Label ();
         Label s2= new Label ();
-        addTab(swipe,s1,res.getImage("rec.jpg"),"","",res);
+        addTab(swipe,s1,res.getImage("dog.jpg"),"","",res);
         
         
         ///********************************************************/
@@ -162,7 +163,7 @@ public class ListReclamationForm extends BaseForm {
         
         for (Reclamation re: list )
  {
-     String urlImage= "rec.jpg";
+     String urlImage= "dog.jpg";
      Image placeHolder =Image.createImage(12,90);
      EncodedImage enc= EncodedImage.createFromImage(placeHolder, false);
      URLImage urlimg=URLImage.createToStorage(enc, urlImage, urlImage, URLImage.RESIZE_SCALE);
@@ -225,7 +226,7 @@ public class ListReclamationForm extends BaseForm {
                  );
                  
                  
-      swipe.addTab ("",res.getImage("rec.jpg"),page1);
+      swipe.addTab ("",res.getImage("dog.jpg"),page1);
     }
    
    //***************

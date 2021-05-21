@@ -97,7 +97,7 @@ public class ListePromotionForm extends BaseForm{
         Label s1= new Label ();
          Label s2= new Label ();
          
-        addTab(swipe,s1,res.getImage("nour.png"),"","",res);
+        addTab(swipe,s1,res.getImage("nourprom.png"),"","",res);
         
         
         ///********************************************************/
@@ -139,12 +139,12 @@ public class ListePromotionForm extends BaseForm{
         Component.setSameSize(radioContainer, s1, s2);
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
+       
         ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Ajputer promotion", barGroup);
+        RadioButton mesListes = RadioButton.createToggle("Mes Promotions", barGroup);
         mesListes.setUIID("SelectBar");
-        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
-        liste.setUIID("SelectBar");
-        RadioButton partage = RadioButton.createToggle("Mes promotions", barGroup);
+
+        RadioButton partage = RadioButton.createToggle("AjouterPromotion", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
@@ -153,13 +153,28 @@ public class ListePromotionForm extends BaseForm{
                InfiniteProgress ip = new InfiniteProgress();
         final Dialog ipDlg = ip.showInifiniteBlocking();
         
-        //  ListReclamationForm a = new ListReclamationForm(res);
+        new ListePromotionForm(res).show();//  ListReclamationForm a = new ListReclamationForm(res);
+        
+  
+        
+          //  a.show();
+            refreshTheme();
+        });
+        
+                partage.addActionListener((e) -> {
+               InfiniteProgress ip = new InfiniteProgress();
+        final Dialog ipDlg = ip.showInifiniteBlocking();
+        
+        new AjouterPromotion(res).show();//  ListReclamationForm a = new ListReclamationForm(res);
+        
+  
+        
           //  a.show();
             refreshTheme();
         });
 
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(3, mesListes, liste, partage),
+                GridLayout.encloseIn(2, mesListes, partage),
                 FlowLayout.encloseBottom(arrow)
         ));
 
@@ -170,7 +185,7 @@ public class ListePromotionForm extends BaseForm{
             updateArrowPosition(partage, arrow);
         });
         bindButtonSelection(mesListes, arrow);
-        bindButtonSelection(liste, arrow);
+      //  bindButtonSelection(liste, arrow);
         bindButtonSelection(partage, arrow);
         // special case for rotation
         addOrientationListener(e -> {
@@ -185,7 +200,7 @@ public class ListePromotionForm extends BaseForm{
  
  for (Promotion promo: list )
  {
-     String urlImage="nour.png";
+     String urlImage="nourprom.png";
      Image placeHolder =Image.createImage(12,90);
      EncodedImage enc= EncodedImage.createFromImage(placeHolder, false);
      URLImage urlimg=URLImage.createToStorage(enc, urlImage, urlImage, URLImage.RESIZE_SCALE);

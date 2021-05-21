@@ -87,7 +87,7 @@ public class ContactP extends BaseForm {
         Label s1= new Label ();
          Label s2= new Label ();
          
-        addTab(swipe,s1,res.getImage("nour.png"),"","",res);
+        addTab(swipe,s1,res.getImage("nourx.png"),"","",res);
         
         
         //IMAGE
@@ -173,13 +173,14 @@ Display.getInstance().sendMessage(new String[] {"smart.kindergarten0@gmail.com"}
 
         Component.setSameSize(radioContainer, s1, s2);
         add(LayeredLayout.encloseIn(swipe, radioContainer));
-
-        ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Reclamations", barGroup);
+ ButtonGroup barGroup = new ButtonGroup();
+        RadioButton mesListes = RadioButton.createToggle("Partrenaires", barGroup);
         mesListes.setUIID("SelectBar");
-        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
+        RadioButton liste = RadioButton.createToggle("Contact", barGroup);
         liste.setUIID("SelectBar");
-        RadioButton partage = RadioButton.createToggle("Reclamer", barGroup);
+        RadioButton stat = RadioButton.createToggle("Statistics", barGroup);
+        stat.setUIID("SelectBar");
+        RadioButton partage = RadioButton.createToggle("Ajouter ", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
@@ -188,28 +189,40 @@ Display.getInstance().sendMessage(new String[] {"smart.kindergarten0@gmail.com"}
                InfiniteProgress ip = new InfiniteProgress();
         final Dialog ipDlg = ip.showInifiniteBlocking();
         //ALO
-       // new ListePartenaireForm(res).show();//  ListReclamationForm a = new ListReclamationForm(res);
+  new ListePartenaireForm(res).show();//  ListReclamationForm a = new ListReclamationForm(res);
+ 
+            refreshTheme();
+        });
         
+                liste.addActionListener((e) -> {
+               InfiniteProgress ip = new InfiniteProgress();
+        final Dialog ipDlg = ip.showInifiniteBlocking();
+        //ALO
+  new ContactP(res).show();//  ListReclamationForm a = new ListReclamationForm(res);
+ 
+            refreshTheme();
+        });
+         stat.addActionListener((el) -> {
+               InfiniteProgress ip = new InfiniteProgress();
+        final Dialog ipDlg = ip.showInifiniteBlocking();
+        //ALO
+    new CatDomaine(res).show();//  ListReclamationForm a = new ListReclamationForm(res);
+
+            refreshTheme();
+        });
+          partage.addActionListener((es) -> {
+               InfiniteProgress ip = new InfiniteProgress();
+        final Dialog ipDlg = ip.showInifiniteBlocking();
+        //ALO
+    new AjouterPartenaire(res).show();//  ListReclamationForm a = new ListReclamationForm(res);
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+   
           //  a.show();
             refreshTheme();
         });
 
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(3, mesListes, liste, partage),
+                GridLayout.encloseIn(4, mesListes, liste,stat, partage),
                 FlowLayout.encloseBottom(arrow)
         ));
 
@@ -411,7 +424,7 @@ Display.getInstance().scheduleLocalNotification(
                  );
                  
                  
-      swipe.addTab ("",res.getImage("nour.png"),page1);
+      swipe.addTab ("",res.getImage("nourx.png"),page1);
       
         
       
