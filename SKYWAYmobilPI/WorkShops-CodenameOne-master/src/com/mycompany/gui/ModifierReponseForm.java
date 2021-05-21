@@ -6,9 +6,12 @@
 package com.mycompany.gui;
 
 import com.codename1.components.FloatingHint;
+import com.codename1.components.ToastBar;
 import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
+import static com.codename1.ui.Component.TOP;
 import com.codename1.ui.Container;
+import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
@@ -122,7 +125,13 @@ public class ModifierReponseForm extends BaseForm {
   // appel fct modif service
   if (ServiceReponse.getInstance().modifierReponse(pr))
   {  
-              System.out.println("ahna tawa baed appel fct modier reponse    HEDHA text r1"+TextR1.getText());
+            
+   ToastBar.getInstance().setPosition(TOP);
+  ToastBar.Status status = ToastBar.getInstance().createStatus();
+ status.setShowProgressIndicator(true);
+   status.setIcon(res.getImage("ok.png").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));                    
+  status.setMessage("Modification Réussie!");
+status.setExpires(10000); 
 
       new ListeReponseForm(res).show();
   

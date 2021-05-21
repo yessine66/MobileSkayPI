@@ -5,9 +5,12 @@
  */
 package com.mycompany.gui;
 import com.codename1.components.FloatingHint;
+import com.codename1.components.ToastBar;
 import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
+import static com.codename1.ui.Component.TOP;
 import com.codename1.ui.Container;
+import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
@@ -74,7 +77,7 @@ public class ModifierQuestionForm extends BaseForm {
   //  TextField idProm= new TextField(String.valueOf(pr.getIdProm()), "Id promotion",20,TextField.ANY);
       TextField textQ= new TextField(pr.getTextQ(), "La question ",20,TextField.ANY);
        TextField nameT= new TextField(pr.getNameT(), "Categorie ",20,TextField.ANY); 
-    TextField nbrPoint= new TextField(String.valueOf(pr.getNbrPoint()), "Id promotion",20,TextField.ANY);
+    TextField nbrPoint= new TextField(String.valueOf(pr.getNbrPoint()), "nombre des points",20,TextField.ANY);
         //ComboBox partCombo = new ComboBox();
         //partCombo.addItem("a");
         
@@ -117,7 +120,14 @@ nameT.setUIID("NewTopLine");
   // appel fct modif service
   if (ServiceQuestion.getInstance().modifierQuestion(pr))
   {  
-       
+       ToastBar.getInstance().setPosition(TOP);
+  ToastBar.Status status = ToastBar.getInstance().createStatus();
+ status.setShowProgressIndicator(true);
+   status.setIcon(res.getImage("ok.png").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));                    
+  status.setMessage("Modification Réussie!");
+status.setExpires(10000);  // only show the status for 3 seconds, then have it automatically clear
+
+                      status.show(); 
       new ListeQuestionForm(res).show();
   
   }

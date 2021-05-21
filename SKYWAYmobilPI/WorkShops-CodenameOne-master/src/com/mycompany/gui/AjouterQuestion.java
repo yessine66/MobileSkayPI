@@ -128,11 +128,11 @@ public class AjouterQuestion extends BaseForm {
         Component.setSameSize(radioContainer, s1, s2);
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
-  ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Questions", barGroup);
+ ButtonGroup barGroup = new ButtonGroup();
+        RadioButton mesListes = RadioButton.createToggle("Mes Reponses", barGroup);
         mesListes.setUIID("SelectBar");
-//        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
-//        liste.setUIID("SelectBar");
+   RadioButton liste = RadioButton.createToggle("Statistique", barGroup);
+   liste.setUIID("SelectBar");
         RadioButton partage = RadioButton.createToggle("Ajouter", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
@@ -146,18 +146,27 @@ public class AjouterQuestion extends BaseForm {
 
             refreshTheme();
         });
+        liste.addActionListener((e) -> {
+               InfiniteProgress ip = new InfiniteProgress();
+        final Dialog ipDlg = ip.showInifiniteBlocking();
+        
+        new StatQ(res).show();
+
+            refreshTheme();
+        });
         
                 partage.addActionListener((e) -> {
                InfiniteProgress ip = new InfiniteProgress();
         final Dialog ipDlg = ip.showInifiniteBlocking();
         
-        new AjouterQuestion(res).show();
+        new AjouterReponse(res).show();
 
             refreshTheme();
         });
 
+
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(2, mesListes, partage),
+                GridLayout.encloseIn(3, mesListes, partage,liste),
                 
                 FlowLayout.encloseBottom(arrow)
         ));
@@ -168,7 +177,7 @@ public class AjouterQuestion extends BaseForm {
             updateArrowPosition(partage, arrow);
         });
         bindButtonSelection(mesListes, arrow);
-      //  bindButtonSelection(liste, arrow);
+      bindButtonSelection(liste, arrow);
         bindButtonSelection(partage, arrow);
         // special case for rotation
         addOrientationListener(e -> {
@@ -182,9 +191,7 @@ public class AjouterQuestion extends BaseForm {
         /************************************/  
  
        
-        TextField email = new TextField("","saisir votre email", 20, TextField.ANY);
- email.setUIID("TextFieldBalck");
-      addStringValue ("email",email);
+
         TextField textQ = new TextField("", "Entrer une question");
         textQ.setUIID("TextFieldBalck");
         addStringValue ("textQ",textQ);
@@ -210,62 +217,7 @@ public class AjouterQuestion extends BaseForm {
 
         
         
-   Button btnEmail = new Button("Saraha");
-        addStringValue("", btnEmail);
-        btnEmail.addActionListener(e -> {
-           
-           
-            
-            try {
-                //Properties props = new Properties()
-                Properties props = new Properties();
-                props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
-                props.put("mail.smtp.port", "587"); //TLS Port
-                props.put("mail.smtp.auth", "true"); //enable authentication
-                 props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
-                Session session = Session.getInstance(props, null);
-                MimeMessage msg = new MimeMessage(session);
-                MimeMessage ms = new MimeMessage(session);
-                msg.setFrom(new InternetAddress(" Passage du test le 22-05-2021 <monEmail@domaine.com>"));
-                msg.setRecipients(Message.RecipientType.TO, email.getText().toString()   );
-                msg.setSubject("SKYWAY LEARNING: Confirmation du  Yessine Fraj");
-                msg.setDescription("Bienvenue sur Skyway Learning cher Yessine Fraj! Votre test sera le ");
-                msg.setSentDate(new Date(System.currentTimeMillis()));
-                String txt =" Bienvenue sur Skyway Learning cher Yessine Fraj! Votre test sera le ";
-             //   msg.setText(txt);
-                   // Create the message part
-         BodyPart messageBodyPart = new MimeBodyPart();
-
-         // Now set the actual message
-         messageBodyPart.setText(" Bienvenue sur Skyway Learning cher Yessine Fraj! Votre test sera le ");
-
-         // Create a multipar message
-         Multipart multipart = new MimeMultipart();
-                 messageBodyPart = new MimeBodyPart();
-         String filename = "C:\\Users\\mega-pc\\Documents\\CodeNameOne\\GITHUB\\SKYWAYmobilPI\\WorkShops-CodenameOne-master\\res\\theme\\skyway-fr.png";
-         DataSource source = new FileDataSource(filename);
-         messageBodyPart.setDataHandler(new DataHandler(source));
-         messageBodyPart.setFileName(filename);
-         multipart.addBodyPart(messageBodyPart);
-msg.setContent(multipart);
-                SMTPTransport st = (SMTPSSLTransport)session.getTransport("smtps");
-                st.connect("smtp.gmail.com",465,"skyway.learning1@gmail.com","skyway123");
-                st.sendMessage(msg, msg.getAllRecipients());
-              
-                System.out.println("server response: "+st.getLastServerResponse());
-                System.out.println("haha");
-               
-        } catch (Exception ex)
-        {
-            ex.printStackTrace();
-            System.err.println("erreur!!! ");
-        }
-           
-        
-            
-           
-        }
-);
+   
         btnAjouter.addActionListener((e)-> { 
         
         
@@ -286,16 +238,16 @@ msg.setContent(multipart);
                  
               
                ServiceQuestion.getInstance().ajouterQuestion(promo);
-                  ToastBar.getInstance().setPosition(BOTTOM);
-                      ToastBar.Status status = ToastBar.getInstance().createStatus();
+                   ToastBar.getInstance().setPosition(TOP);
+  ToastBar.Status status = ToastBar.getInstance().createStatus();
  status.setShowProgressIndicator(true);
+   status.setIcon(res.getImage("ok.png").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));                    
+  status.setMessage("Ajout Réussi!");
+status.setExpires(10000);  // only show the status for 3 seconds, then have it automatically clear
 
-   status.setIcon(res.getImage("fatma.png").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));                    
-                            status.setMessage("makch nrml");
-                                                  status.setExpires(10000);  // only show the status for 3 seconds, then have it automatically clear
-
-                      status.show();
-               //  iDialog.dispose(); //NAHIW LOADING BAED AJOUT
+                      status.show();  
+              
+               
                                    new ListeQuestionForm(res).show();
 
                  refreshTheme(); 

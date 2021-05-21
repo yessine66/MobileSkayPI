@@ -8,11 +8,13 @@ package com.mycompany.gui;
 import com.codename1.components.InfiniteProgress;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
+import com.codename1.components.ToastBar;
 import com.codename1.notifications.LocalNotification;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.ComboBox;
 import com.codename1.ui.Component;
+import static com.codename1.ui.Component.BOTTOM;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
@@ -258,7 +260,7 @@ super.addSideMenu(res);
             else 
             {
                  InfiniteProgress ip = new InfiniteProgress(); //lading after insert data
-                 final Dialog iDialog = ip.showInfiniteBlocking();
+               //  final Dialog iDialog = ip.showInfiniteBlocking();
                   /// combooo
            
                  //Integer.valueOf(reduction.getText())
@@ -281,8 +283,15 @@ super.addSideMenu(res);
                  // appel fct ajout service
                  ServiceReponse.getInstance().ajouterReponse(promo);
                  
-                 iDialog.dispose(); //NAHIW LOADING BAED AJOUT
-                 
+                // iDialog.dispose(); //NAHIW LOADING BAED AJOUT
+                ToastBar.getInstance().setPosition(TOP);
+  ToastBar.Status status = ToastBar.getInstance().createStatus();
+ status.setShowProgressIndicator(true);
+   status.setIcon(res.getImage("ok.png").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));                    
+  status.setMessage("Ajout Réussi!");
+status.setExpires(10000);  // only show the status for 3 seconds, then have it automatically clear
+
+                      status.show();  
                    new ListeReponseForm(res).show();
                  
                  refreshTheme(); 
