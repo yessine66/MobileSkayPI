@@ -7,6 +7,7 @@
     <image name="admin.png"  />
     <image name="ajHrkqeGvr6NF3eZSs3f.png"  />
     <image name="back-logo.jpeg"  />
+    <image name="bgLogin.png"  />
     <image name="checked.png"  />
     <image name="client.png"  />
     <image name="confirmation-background.jpg"  />
@@ -25,6 +26,8 @@
     <image name="news-item.jpg"  />
     <image name="news-tab-down-arrow.png" type="multi"  />
     <image name="news-tab-down.png" type="multi"  />
+    <image name="nourprom.png"  />
+    <image name="nourx.png"  />
     <image name="on-off-off.png" type="multi"  />
     <image name="on-off-on.png" type="multi"  />
     <image name="profile-background.jpg"  />
@@ -237,7 +240,7 @@
         <val key="SideCommand.transparency" value="0" />
         <val key="SideNavigationPanel.bgColor" value="ffffff" />
         <val key="SideNavigationPanel.transparency" value="255" />
-        <val key="SignIn.bgImage" value="signin-background.jpg" />
+        <val key="SignIn.bgImage" value="bgLogin.png" />
         <val key="SignIn.bgType" value="33" />
         <val key="SignIn.margin" value="0,0,0,0" />
         <val key="SignIn.padUnit" value="0,0,2,0" />

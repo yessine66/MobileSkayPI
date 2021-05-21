@@ -58,7 +58,7 @@ public class MenuBack extends BaseForm{
         Toolbar tb = new Toolbar(true);
         setToolbar(tb);
         getTitleArea().setUIID("Container");
-        setTitle("~~MENU~~");
+        setTitle("~~MENU Back~~");
         getContentPane().setScrollVisible(false);
         
         super.addSideMenu(res);

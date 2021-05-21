@@ -7,6 +7,7 @@ package com.mycompany.gui;
 
 import com.codename1.components.InfiniteProgress;
 import com.codename1.components.ScaleImageLabel;
+import com.codename1.components.ShareButton;
 import com.codename1.components.SpanLabel;
 import com.codename1.notifications.LocalNotification;
 import com.codename1.ui.Button;
@@ -55,6 +56,7 @@ import java.util.Map;
 /////////////
 
 import com.codename1.io.ConnectionRequest;
+import com.codename1.io.FileSystemStorage;
 import com.codename1.io.JSONParser;
 import com.codename1.io.Log;
 import com.codename1.io.NetworkManager;
@@ -78,11 +80,14 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.spinner.Picker;
+import com.codename1.ui.util.ImageIO;
 import java.util.ArrayList;
 import java.util.Map;
 import com.codename1.ui.util.Resources;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 ///////////////
 /**
  *
@@ -117,26 +122,6 @@ public class AjouterPromotion extends BaseForm {
    
         tb.addSearchCommand(s -> { 
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         } );
         
         
@@ -147,7 +132,7 @@ public class AjouterPromotion extends BaseForm {
         Label s1= new Label ();
          Label s2= new Label ();
          
-        addTab(swipe,s1,res.getImage("nour.png"),"","",res);
+        addTab(swipe,s1,res.getImage("nourprom.png"),"","",res);
         
         
         ///********************************************************/
@@ -190,11 +175,10 @@ public class AjouterPromotion extends BaseForm {
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
         ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Reclamations", barGroup);
+        RadioButton mesListes = RadioButton.createToggle("Mes Promotions", barGroup);
         mesListes.setUIID("SelectBar");
-        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
-        liste.setUIID("SelectBar");
-        RadioButton partage = RadioButton.createToggle("Reclamer", barGroup);
+
+        RadioButton partage = RadioButton.createToggle("AjouterPromotion", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
@@ -205,26 +189,26 @@ public class AjouterPromotion extends BaseForm {
         
         new ListePromotionForm(res).show();//  ListReclamationForm a = new ListReclamationForm(res);
         
+  
         
+          //  a.show();
+            refreshTheme();
+        });
         
+                partage.addActionListener((e) -> {
+               InfiniteProgress ip = new InfiniteProgress();
+        final Dialog ipDlg = ip.showInifiniteBlocking();
         
+        new AjouterPromotion(res).show();//  ListReclamationForm a = new ListReclamationForm(res);
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+  
         
           //  a.show();
             refreshTheme();
         });
 
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(3, mesListes, liste, partage),
+                GridLayout.encloseIn(2, mesListes, partage),
                 FlowLayout.encloseBottom(arrow)
         ));
 
@@ -235,7 +219,7 @@ public class AjouterPromotion extends BaseForm {
             updateArrowPosition(partage, arrow);
         });
         bindButtonSelection(mesListes, arrow);
-        bindButtonSelection(liste, arrow);
+      //  bindButtonSelection(liste, arrow);
         bindButtonSelection(partage, arrow);
         // special case for rotation
         addOrientationListener(e -> {
@@ -374,16 +358,6 @@ public class AjouterPromotion extends BaseForm {
              
 
                  
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
                 // iDialog.dispose(); //NAHIW LOADING BAED AJOUT
                  
                    new ListePromotionForm(res).show();
@@ -399,29 +373,28 @@ public class AjouterPromotion extends BaseForm {
             ex.printStackTrace();
             System.err.println("errrrrrrrrrror GUI AJOUTTTTTTTTTTTTTTTT ");
         }
-        
-        
-        
+
         
         });
-        
-        
-        
-        
-  
-        
-        
-  
-        
-        
-  
-        
-        
-        
-        
-        
-        
-        
+     
+        ShareButton sb = new ShareButton();
+sb.setText("Nouvelle annonce");
+//this.add(sb);
+
+Image screenshot = Image.createImage(this.getWidth(), this.getHeight());
+this.revalidate();
+this.setVisible(true);
+this.paintComponent(screenshot.getGraphics(), true);
+
+String imageFile = FileSystemStorage.getInstance().getAppHomePath() + "screenshot.png";
+        System.out.println("home appppppppppppppppppppppppppppppppppppppppppppppppppppppp  "+imageFile);
+try(OutputStream os = FileSystemStorage.getInstance().openOutputStream(imageFile)) {
+    ImageIO.getImageIO().save(screenshot, os, ImageIO.FORMAT_PNG, 1);
+} catch(IOException err) {
+    Log.e(err);
+}
+sb.setImageToShare(imageFile, "image/png"); 
+         this.add(sb);
         
     }
 
@@ -469,7 +442,7 @@ public class AjouterPromotion extends BaseForm {
                  );
                  
                  
-      swipe.addTab ("",res.getImage("nour.png"),page1);
+      swipe.addTab ("",res.getImage("nourprom.png"),page1);
       
       
       
