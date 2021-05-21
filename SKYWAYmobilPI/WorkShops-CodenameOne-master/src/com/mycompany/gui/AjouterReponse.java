@@ -157,18 +157,20 @@ super.addSideMenu(res);
         
         new ListeReponseForm(res).show();//  ListReclamationForm a = new ListReclamationForm(res);
         
+
         
         
+          //  a.show();
+            refreshTheme();
+        });
         
+        partage.addActionListener((e) -> {
+               InfiniteProgress ip = new InfiniteProgress();
+        final Dialog ipDlg = ip.showInifiniteBlocking();
         
+        new ListeReponseForm(res).show();//  ListReclamationForm a = new ListReclamationForm(res);
         
-        
-        
-        
-        
-        
-        
-        
+
         
         
           //  a.show();
@@ -176,7 +178,7 @@ super.addSideMenu(res);
         });
 
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(3, mesListes,  partage),
+                GridLayout.encloseIn(2, mesListes,  partage),
                 FlowLayout.encloseBottom(arrow)
         ));
 

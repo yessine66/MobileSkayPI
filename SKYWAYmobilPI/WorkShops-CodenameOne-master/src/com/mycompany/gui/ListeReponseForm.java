@@ -170,11 +170,12 @@ getContentPane().animateLayout(250);
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
       
-      ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes réponses", barGroup);
+    ButtonGroup barGroup = new ButtonGroup();
+        RadioButton mesListes = RadioButton.createToggle("Mes Reponses", barGroup);
         mesListes.setUIID("SelectBar");
-        
-        RadioButton partage = RadioButton.createToggle("Ajouter des réponses", barGroup);
+//        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
+//        liste.setUIID("SelectBar");
+        RadioButton partage = RadioButton.createToggle("Ajouter", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
@@ -183,13 +184,23 @@ getContentPane().animateLayout(250);
                InfiniteProgress ip = new InfiniteProgress();
         final Dialog ipDlg = ip.showInifiniteBlocking();
         
-        //  ListReclamationForm a = new ListReclamationForm(res);
-          //  a.show();
+        new ListeReponseForm(res).show();
+
+            refreshTheme();
+        });
+        
+                partage.addActionListener((e) -> {
+               InfiniteProgress ip = new InfiniteProgress();
+        final Dialog ipDlg = ip.showInifiniteBlocking();
+        
+        new AjouterReponse(res).show();
+
             refreshTheme();
         });
 
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(3, mesListes, partage),
+                GridLayout.encloseIn(2, mesListes, partage),
+                
                 FlowLayout.encloseBottom(arrow)
         ));
 

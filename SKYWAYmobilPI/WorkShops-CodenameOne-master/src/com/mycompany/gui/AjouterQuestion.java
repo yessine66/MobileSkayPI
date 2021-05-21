@@ -128,11 +128,11 @@ public class AjouterQuestion extends BaseForm {
         Component.setSameSize(radioContainer, s1, s2);
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
-        ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes questions", barGroup);
+  ButtonGroup barGroup = new ButtonGroup();
+        RadioButton mesListes = RadioButton.createToggle("Mes Questions", barGroup);
         mesListes.setUIID("SelectBar");
-        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
-        liste.setUIID("SelectBar");
+//        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
+//        liste.setUIID("SelectBar");
         RadioButton partage = RadioButton.createToggle("Ajouter", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
@@ -143,22 +143,24 @@ public class AjouterQuestion extends BaseForm {
         final Dialog ipDlg = ip.showInifiniteBlocking();
         
         new ListeQuestionForm(res).show();
+
+            refreshTheme();
+        });
         
- 
+                partage.addActionListener((e) -> {
+               InfiniteProgress ip = new InfiniteProgress();
+        final Dialog ipDlg = ip.showInifiniteBlocking();
         
-        
-        
-        
+        new AjouterQuestion(res).show();
+
             refreshTheme();
         });
 
-     
-
         add(LayeredLayout.encloseIn(
-                GridLayout.encloseIn(3, mesListes, liste, partage),
+                GridLayout.encloseIn(2, mesListes, partage),
+                
                 FlowLayout.encloseBottom(arrow)
         ));
-
         partage.setSelected(true);
         arrow.setVisible(false);
         addShowListener(e -> {
@@ -166,7 +168,7 @@ public class AjouterQuestion extends BaseForm {
             updateArrowPosition(partage, arrow);
         });
         bindButtonSelection(mesListes, arrow);
-        bindButtonSelection(liste, arrow);
+      //  bindButtonSelection(liste, arrow);
         bindButtonSelection(partage, arrow);
         // special case for rotation
         addOrientationListener(e -> {

@@ -6,16 +6,17 @@
 package com.mycompany.gui;
 
 import com.codename1.components.InfiniteProgress;
-import com.codename1.components.MultiButton;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
-import static com.codename1.io.Log.e;
+import com.codename1.io.Log;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
+import com.codename1.ui.Calendar;
 import com.codename1.ui.Component;
 import static com.codename1.ui.Component.BOTTOM;
 import static com.codename1.ui.Component.CENTER;
 import static com.codename1.ui.Component.LEFT;
+import static com.codename1.ui.Component.RIGHT;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
@@ -28,6 +29,7 @@ import com.codename1.ui.Label;
 import com.codename1.ui.RadioButton;
 import com.codename1.ui.Tabs;
 import com.codename1.ui.TextArea;
+import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BorderLayout;
@@ -36,24 +38,37 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.spinner.Picker;
 import com.codename1.ui.util.Resources;
-import com.mycompany.entities.Question;
-import com.mycompany.services.ServiceQuestion;
+import com.sun.mail.smtp.SMTPSSLTransport;
+import com.sun.mail.smtp.SMTPTransport;
+import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.List;
-//import org.jcp.xml.dsig.internal.dom.Utils;
+import java.util.Date;
+import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.Multipart;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  *
  * @author Lenovo
  */
-public class ListeQuestionForm extends BaseForm{
+public class testFront extends BaseForm{
     Form current;
-    public ListeQuestionForm(Resources res)
+    public testFront(Resources res)
     {
         
         
-        super("Ajout Question",BoxLayout.y());
+        super("Passer un test",BoxLayout.y());
        
       Toolbar tb = new Toolbar(true);
         
@@ -61,45 +76,37 @@ public class ListeQuestionForm extends BaseForm{
         setToolbar(tb);
       getTitleArea().setUIID("Container");
     
-      setTitle ("AJouter Question");
+      setTitle ("Passer un test");
         getContentPane().setScrollVisible(false);
         
-        super.addSideMenu(res);
-        
-     
-        tb.addSearchCommand(s -> {   
-            String text = (String) s.getSource();
-            if (text == null || text.length() == 0) {
-                // clear search
-                for (Component cmp : getContentPane()) {
-                    cmp.setHidden(false);
-                    cmp.setVisible(true);
-                }
-                getContentPane().animateLayout(150);
-            } else {
-                text = text.toLowerCase();
-                for (Component cmp : getContentPane()) {
-                    MultiButton mb = (MultiButton) cmp;
-                    String line1 = mb.getTextLine1();
-                    String line2 = mb.getTextLine2();
-                    boolean show = line1 != null && line1.toLowerCase().indexOf(text) > -1 ||
-                            line2 != null && line2.toLowerCase().indexOf(text) > -1;
-                    mb.setHidden(!show);
-                    mb.setVisible(show);
+                   super.addSideMenuFront(res);
 
-                }
-                getContentPane().animateLayout(150);
-            }
-        }, 4
- 
-         );
-       
-       /* Button k = new Button("Recherche");
-        k.setUIID("SelectBar");
-        k.addActionListener(e -> {
-            new RechercheQ(res).show();
-        });    
-        */
+        
+        tb.addSearchCommand(s -> { 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        } );
+        
+        
         
         
         
@@ -107,7 +114,8 @@ public class ListeQuestionForm extends BaseForm{
         Label s1= new Label ();
          Label s2= new Label ();
          
-        addTab(swipe,s1,res.getImage("fatma.png"),"","",res);
+        addTab(swipe,s1,res.getImage("test.jpg"),"","",res);
+        
         
         
         ///********************************************************/
@@ -149,12 +157,11 @@ public class ListeQuestionForm extends BaseForm{
         Component.setSameSize(radioContainer, s1, s2);
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
-  ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Reponses", barGroup);
+        ButtonGroup barGroup = new ButtonGroup();
+        RadioButton mesListes = RadioButton.createToggle("Refresh", barGroup);
         mesListes.setUIID("SelectBar");
-//        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
-//        liste.setUIID("SelectBar");
-        RadioButton partage = RadioButton.createToggle("Ajouter", barGroup);
+
+        RadioButton partage = RadioButton.createToggle("Test", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
@@ -163,25 +170,27 @@ public class ListeQuestionForm extends BaseForm{
                InfiniteProgress ip = new InfiniteProgress();
         final Dialog ipDlg = ip.showInifiniteBlocking();
         
-        new ListeReponseForm(res).show();
-
+        new testFront(res).show();
+        // ListReclamationForm a = new ListReclamationForm(res);
+          //  a.show();
             refreshTheme();
         });
         
-                partage.addActionListener((e) -> {
+               partage.addActionListener((e) -> {
                InfiniteProgress ip = new InfiniteProgress();
         final Dialog ipDlg = ip.showInifiniteBlocking();
         
-        new AjouterReponse(res).show();
-
+        new testFront(res).show();
+        // ListReclamationForm a = new ListReclamationForm(res);
+          //  a.show();
             refreshTheme();
         });
 
         add(LayeredLayout.encloseIn(
                 GridLayout.encloseIn(2, mesListes, partage),
-                
                 FlowLayout.encloseBottom(arrow)
         ));
+
         partage.setSelected(true);
         arrow.setVisible(false);
         addShowListener(e -> {
@@ -189,46 +198,37 @@ public class ListeQuestionForm extends BaseForm{
             updateArrowPosition(partage, arrow);
         });
         bindButtonSelection(mesListes, arrow);
-        //bindButtonSelection(liste, arrow);
+       // bindButtonSelection(liste, arrow);
         bindButtonSelection(partage, arrow);
         // special case for rotation
         addOrientationListener(e -> {
             updateArrowPosition(barGroup.getRadioButton(barGroup.getSelectedIndex()), arrow);
         });
 
-        
-    /*  List<Question> series = Utils.getList();
-        for (int i = 0; i < series.size(); i++) {
-            System.out.println(series.get(i));
-            this.add(addSeriesHolder(series.get(i)));
-    */   
-        
-     ArrayList <Question>list =ServiceQuestion.getInstance().afficherQuestion();
- 
-  
- for (Question promo: list )
- { 
-     String urlImage="fatma.png";
+       
+     
+     String urlImage="test.jpg";
      Image placeHolder =Image.createImage(12,90);
      EncodedImage enc= EncodedImage.createFromImage(placeHolder, false);
      URLImage urlimg=URLImage.createToStorage(enc, urlImage, urlImage, URLImage.RESIZE_SCALE);
              // addButton(null,promo.getCodeP(),promo.getReduction(),promo.getDated(),promo.getDatef());
     // addButton(null,promo.getCodeP(),promo.getReduction(),promo.getDated(),promo.getDatef());
    // addButton(urlimg,promo.getCodeP(),promo.getReduction(),promo.getDated(),promo.getDatef(),promo,res);
-   addButton(urlimg,promo,res);
+ addButton(urlimg,res);
+   
+   
    
      ScaleImageLabel image = new ScaleImageLabel(urlimg);
      Container containerImg= new Container();
      image.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
 
+ 
    
-   
-   
-
- }
-   
+        
+        
     }
-         
+    
+    
      private void addTab(Tabs swipe,Label spacer, Image image, String string, String text, Resources res) {
         int size = Math.min (Display.getInstance().getDisplayWidth(),Display.getInstance().getDisplayHeight());
         if (image.getHeight()< size)
@@ -268,12 +268,15 @@ public class ListeQuestionForm extends BaseForm{
                  );
                  
                  
-      swipe.addTab ("",res.getImage("quiz.png"),page1);
+      swipe.addTab ("",res.getImage("test.jpg"),page1);
       
       
       
     }
-    
+    private void addStringValue(String s, Component v) {
+       add(BorderLayout.west(new Label(s,"PaddedLabel")).add(BorderLayout.CENTER,v));
+       add (createLineSeparator(0xeeeeee));
+    }
     
     public void bindButtonSelection  (Button btn , Label l)
     {
@@ -291,8 +294,8 @@ public class ListeQuestionForm extends BaseForm{
         
         
         //appel fct aaff
-               // ServiceQuestion serviceQuestion = new ServiceQuestion();
-       //    ArrayList <Question>list =ServiceQuestion.getInstance().afficherQuestion();
+               // ServicePromotion servicePromotion = new ServicePromotion();
+       //    ArrayList <Promotion>list =ServicePromotion.getInstance().afficherPromotion();
         
         
         
@@ -305,6 +308,14 @@ public class ListeQuestionForm extends BaseForm{
  
  
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
     private void updateArrowPosition(Button btn, Label l) {
      l.getUnselectedStyle().setMargin(LEFT, btn.getX() + btn.getWidth() / 2 - l.getWidth() / 2);
      l.getParent().repaint();;
@@ -312,7 +323,8 @@ public class ListeQuestionForm extends BaseForm{
         
         
     }
-  private void addButton(Image img, Question promo,Resources res) {
+//   private void addButton(Image img ,String codeP, int reduction,String dated,String datef,Promotion promo,Resources res)
+    private void addButton(Image img, Resources res) {
         int height = Display.getInstance().convertToPixels(11.5f);
             int width= Display.getInstance().convertToPixels(14f);
             
@@ -322,146 +334,79 @@ public class ListeQuestionForm extends BaseForm{
             
       //  Container cnt= new Container ();
       Container cnt = BorderLayout.west(image);
-       // Container o = new Container ();
-      
-  /*   TextArea ta = new TextArea (codeP);
-     ta.setUIID("NewsTopLine");
-     ta.setEditable (false);*/
+     //   Container o = new Container ();
   
-    List<Question> series = new ArrayList<>();
-   Label idQ = new Label ("id: "+promo.getIdQ(),"NewsTopLine2");
-  Label textQ = new Label ("La question: "+promo.getTextQ(),"NewsTopLine2");
-  Label nbrPoint = new Label ("score: "+promo.getNbrPoint(),"NewsTopLine2");
-  Label nameT = new Label ("("+promo.getNameT(),"NewsTopLine2");
- 
-  createLineSeparator();
+        TextField email = new TextField("","saisir votre email", 20, TextField.ANY);
+ email.setUIID("TextFieldBalck");
+     addStringValue ("email",email);
      
      
-// cnt.add(BorderLayout.CENTER,BoxLayout.encloseY(BoxLayout.encloseX(codeText)/*,BoxLayout.encloseX(reductionText)*/,BoxLayout.encloseX(datedText),BoxLayout.encloseX(datefText)));
-// cnt.add(BoxLayout.encloseX(datefText));
-//o.add(BorderLayout.CENTER);
- // cnt.addAll(BoxLayout.encloseY(BoxLayout.encloseX(codeText),BoxLayout.encloseX(reductionText)),BoxLayout.encloseY(BoxLayout.encloseX(datedText),BoxLayout.encloseX(datefText)));
- 
- 
- 
- //supprimer btn
- Label lsupprimer = new Label (" ");
- 
- lsupprimer.setUIID ("NewsTopLine");
- Style supprimerStyle = new Style (lsupprimer.getUnselectedStyle());
- supprimerStyle.setFgColor(0xf21f21);
- 
- 
- FontImage supprimerImage = FontImage.createMaterial(FontImage.MATERIAL_DELETE, supprimerStyle);
- lsupprimer.setIcon(supprimerImage);
- lsupprimer.setTextPosition(RIGHT);
- 
- //clixk delete btn
- lsupprimer.addPointerPressedListener(l -> {
-
-Dialog dig = new Dialog ("suppression");
-if (dig.show("Suppression","Voulez vous supprimer cette question ?","annuler","Oui"))
-{ 
-
-dig.dispose();
-
-}
-
-else 
-{ 
-    dig.dispose();
-    //appel fct supp service
-    if (ServiceQuestion.getInstance().supprimerQuestion(promo.getIdQ()))
-    { 
-    
-    
- new ListeQuestionForm(res).show();
-    
-    
-    
-    
-    
-    }
-    
-}
-
-
-
-
- });
- 
-
- //update icon 
- 
- Label lmodifier = new Label (" ");
- 
- lmodifier.setUIID ("NewsTopLine");
- Style modifierStyle = new Style ( lmodifier.getUnselectedStyle());
-modifierStyle.setFgColor(0xf7ad02);
- 
- FontImage modifierImage = FontImage.createMaterial(FontImage.MATERIAL_MODE_EDIT, modifierStyle);
-lmodifier.setIcon(modifierImage);
-lmodifier.setTextPosition(LEFT);
- 
- 
-
-//clixk updatze btn
- lmodifier.addPointerPressedListener(l -> {
-
-
-new ModifierQuestionForm(res,promo).show();
-
- });
- 
-
-
-
- 
- 
- 
- cnt.add(BorderLayout.CENTER, BoxLayout.encloseY(
-         
-         
-        //BoxLayout.encloseX(idQ,idQ),
-         // BoxLayout.encloseX(datedText),
-          // BoxLayout.encloseX(datefText),
-           BoxLayout.encloseX(textQ,idQ) ,
-         BoxLayout.encloseX(nbrPoint,lmodifier,lsupprimer)) );
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-     add(cnt);
-   
-    }
-    
- 
-    
-    
-
+ Picker datePicker= new Picker();
+ datePicker.setType(Display.PICKER_TYPE_CALENDAR);
+  datePicker.setUIID("Choisir date du test");
+        addStringValue("datePicker", datePicker);
+  SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        
  
         
-        
-        
-    }
+    
+
+    Button btnEmail = new Button("Envoyer mail");
+      addStringValue("", btnEmail);
+        btnEmail.addActionListener(e -> {
+           
+           
+            
+            try {
+                //Properties props = new Properties()
+                Properties props = new Properties();
+                props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+                props.put("mail.smtp.port", "587"); //TLS Port
+                props.put("mail.smtp.auth", "true"); //enable authentication
+                 props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
+                javax.mail.Session session = javax.mail.Session.getInstance(props, null);
+                MimeMessage msg = new MimeMessage(session);
+                MimeMessage ms = new MimeMessage(session);
+                msg.setFrom(new InternetAddress(" SKYWAY LEARNING Confirmation du  Yessine Fraj <monEmail@domaine.com>"));
+                msg.setRecipients(Message.RecipientType.TO, email.getText().toString()   );
+                msg.setSubject("Passage du test le "+format.format(datePicker.getDate()));
+                msg.setDescription("Bienvenue sur Skyway Learning cher Yessine Fraj! Votre test sera le ");
+                msg.setSentDate(new Date(System.currentTimeMillis()));
+                String txt =" Bienvenue sur Skyway Learning cher Yessine Fraj! Votre test sera le ";
+             //   msg.setText(txt);
+                   // Create the message part
+         BodyPart messageBodyPart = new MimeBodyPart();
+
+         // Now set the actual message
+         messageBodyPart.setText(" Bienvenue sur Skyway Learning cher Yessine Fraj! Votre test sera le ");
+
+         // Create a multipar message
+         Multipart multipart = new MimeMultipart();
+                 messageBodyPart = new MimeBodyPart();
+        String filename = "C:\\Users\\mega-pc\\Documents\\CodeNameOne\\GITHUB\\SKYWAYmobilPI\\WorkShops-CodenameOne-master\\res\\theme\\skyway-fr.png";
+        //String filename="C:\\Users\\DELL\\Desktop\\skyway-fr.png";
+         DataSource source = new FileDataSource(filename);
+         messageBodyPart.setDataHandler(new DataHandler(source));
+         messageBodyPart.setFileName(filename);
+         multipart.addBodyPart(messageBodyPart);
+msg.setContent(multipart);
+                SMTPTransport st = (SMTPSSLTransport)session.getTransport("smtps");
+                st.connect("smtp.gmail.com",465,"skyway.learning1@gmail.com","skyway123");
+                st.sendMessage(msg, msg.getAllRecipients());
+              
+                System.out.println("server response: "+st.getLastServerResponse());
+                System.out.println("haha");
+               
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+            System.err.println("erreur!!! ");
+        }});
+           
     
     
-     
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+}}

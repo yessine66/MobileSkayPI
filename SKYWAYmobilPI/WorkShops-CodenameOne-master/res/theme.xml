@@ -35,6 +35,7 @@
     <image name="signin-background.jpg"  />
     <image name="signup-background.jpg"  />
     <image name="smily.png" type="multi"  />
+    <image name="test.jpg"  />
     <theme name="Theme">
         <val key="@includeNativeBool" value="true" />
         <val key="@tabPlacementInt" value="0" />

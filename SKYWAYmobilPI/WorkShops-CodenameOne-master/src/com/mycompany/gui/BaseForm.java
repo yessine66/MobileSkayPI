@@ -93,12 +93,11 @@ public class BaseForm extends Form {
        // tb.addMaterialCommandToSideMenu("stat", FontImage.MATERIAL_EXIT_TO_APP, e -> new CatDomaine(res).show());
         tb.addMaterialCommandToSideMenu("Promotions", FontImage.MATERIAL_STREETVIEW, e -> new AjouterPromotion(res).show());
        // tb.addMaterialCommandToSideMenu("Liste promo", FontImage.MATERIAL_LOCAL_FIRE_DEPARTMENT, e -> new ListePromotionForm(res).show());
-        tb.addMaterialCommandToSideMenu("Ajouter Question", FontImage.MATERIAL_ADD_TASK, e -> new AjouterQuestion(res).show());
-        tb.addMaterialCommandToSideMenu("Lister  Question", FontImage.MATERIAL_HELP, e -> new ListeQuestionForm(res).show());
+        tb.addMaterialCommandToSideMenu("Question ?", FontImage.MATERIAL_QUESTION_ANSWER, e -> new AjouterQuestion(res).show());
+
         
-                tb.addMaterialCommandToSideMenu("Ajouter Reponse", FontImage.MATERIAL_THUMB_UP, e -> new AjouterReponse(res).show());
-        tb.addMaterialCommandToSideMenu("Lister  Reponse", FontImage.MATERIAL_FINGERPRINT, e -> new ListeReponseForm(res).show());
-        
+                tb.addMaterialCommandToSideMenu("Reponses", FontImage.MATERIAL_QUESTION_ANSWER, e -> new AjouterReponse(res).show());
+
         tb.addMaterialCommandToSideMenu("Ajout Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> new AjoutReclamation(res).show());
         tb.addMaterialCommandToSideMenu("Lister Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> new ListReclamationForm(res).show());
         
@@ -130,7 +129,7 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("Partenaires", FontImage.MATERIAL_RECEIPT, e -> new ListePartenaireFront(res).show());
          tb.addMaterialCommandToSideMenu("Nos Promotions", FontImage.MATERIAL_LOCAL_FIRE_DEPARTMENT, e -> new ListePromotionFormFront(res).show());
          
-         tb.addMaterialCommandToSideMenu("Passer un test", FontImage.MATERIAL_CONTENT_PASTE, e -> System.out.println("\n\n\ntesttestestfatma    fatma "));
+         tb.addMaterialCommandToSideMenu("Passer un test", FontImage.MATERIAL_CONTENT_PASTE, e -> new testFront(res).show());
         
         tb.addMaterialCommandToSideMenu("Ajout Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> new AjoutReclamation(res).show());
         tb.addMaterialCommandToSideMenu("Lister Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> new ListReclamationForm(res).show());
