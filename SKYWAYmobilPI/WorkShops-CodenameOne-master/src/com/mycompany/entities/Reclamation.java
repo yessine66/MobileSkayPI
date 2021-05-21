@@ -57,6 +57,10 @@ public class Reclamation {
         this.enseignant = enseignant;
     }
 
+    public Reclamation(String text, String text0, String text1, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getIdRec() {
         return idRec;
     }

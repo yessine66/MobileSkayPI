@@ -16,84 +16,82 @@ import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
+import com.mycompany.entities.Feedback;
 import com.mycompany.entities.Reclamation;
-
-import com.mycompany.services.ServiceReclamation;
-
+import com.mycompany.services.ServiceFeedback;
 import java.util.ArrayList;
 
 /**
  *
  * @author IBTIHEL
  */
-public class ListReclamationForm extends Form{
-
+public class ListFeedbackForm extends Form {
+    
       Form current;
 
-    public ListReclamationForm(Form previous, ArrayList<Reclamation> Reclamations) {
+    public ListFeedbackForm(Form previous, ArrayList<Feedback> Feedbacks) {
         current = this;
         setLayout(BoxLayout.y());
-        setTitle("List Reclamations");
+        setTitle("List Feedbacks");
         //Add student
-        Button btnAddStudent = new Button("Add Reclamation");
-        btnAddStudent.addActionListener(e -> new AddReclamationForm(current).show());
+        Button btnAddStudent = new Button("Add Feedback");
+        btnAddStudent.addActionListener(e -> new AddFeedbackForm(current).show());
         add(btnAddStudent);
         //Search
-        TextField tfSearch = new TextField("", "Search by Objet");
+        TextField tfSearch = new TextField("", "Search by Avis");
         Button btnSearch = new Button("Search");
         btnSearch.addActionListener(e -> {
             if (!tfSearch.getText().isEmpty()) {
-       new ListReclamationForm(new ListReclamationForm(new HomeForm(), ServiceReclamation.getInstance().getAllReclamations()), ServiceReclamation.getInstance().getSearchedStudents(tfSearch.getText())).show();
+                new ListFeedbackForm(new ListFeedbackForm(new HomeForm(), ServiceFeedback.getInstance().getAllFeedbacks()), ServiceFeedback.getInstance().getSearchedFeeds(tfSearch.getText())).show();
             }
         });
         addAll(tfSearch, btnSearch);
         
         //Tri
-        ComboBox<String> triCB = new ComboBox<>("Objet", "text", "date", "Cours");
+        ComboBox<String> triCB = new ComboBox<>("Objet", "text", "Avis");
         Button btnTri = new Button("Tri");
         btnTri.addActionListener(e -> {
-            new ListReclamationForm(new ListReclamationForm(new HomeForm(), ServiceReclamation.getInstance().getAllReclamations()), ServiceReclamation.getInstance().getTriReclamation(TriBy(triCB))).show();
+            new ListFeedbackForm(new ListFeedbackForm(new HomeForm(), ServiceFeedback.getInstance().getAllFeedbacks()), ServiceFeedback.getInstance().getSearchedFeeds(TriBy(triCB))).show();
         });
         addAll(triCB, btnTri);
         
-        for (Reclamation s : Reclamations) {
+        for (Feedback s : Feedbacks) {
             DisplayMusic(s);
         }
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
 
-    ListReclamationForm(Resources res) {
+    ListFeedbackForm(Resources res) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void DisplayMusic(Reclamation s) {
+    private void DisplayMusic(Feedback s) {
         Container con = new Container(BoxLayout.y());
         
         Label objet = new Label("objet: " + s.getObjet());
-        Label text = new Label("text : " + s.getTextR());
-        Label date = new Label("dateEnvoi : " + s.getDateEnvoi());
-         Label cours = new Label("cours : " + s.getCours());
-          Label enseignant = new Label("enseignant : " + s.getEnseignant());
+        Label text = new Label("text : " + s.getText());
+        Label avis = new Label("dateEnvoi : " + s.getAvis());
+         
         //show
        // Button btnShow = new Button("Show");
        // btnShow.addActionListener(e -> new StudentDetailsForm(current, s).show());
         //update
         Button btnUpdate = new Button("Update");
-        btnUpdate.addActionListener(e -> new UpdateReclamationForm(current, s).show());
+//        btnUpdate.addActionListener(e -> new UpdateReclamationForm(current, s).show());
         //delete
         Button btnDel = new Button("Delete");
-       btnDel.addActionListener(e -> {
+      btnDel.addActionListener(e -> {
             if (Dialog.show("Deleting " + s.getObjet(), "You sure you want to delete this item ?", "Ok", "Cancel")) {
-                if (ServiceReclamation.getInstance().deleteReclamation(s)) {
+                if (ServiceFeedback.getInstance().deleteFeedback(s)) {
                     Dialog.show("Success", "Connection accepted", new Command("OK"));
-                    new ListReclamationForm(new HomeForm(), ServiceReclamation.getInstance().getAllReclamations()).show();
+                    new ListFeedbackForm(new HomeForm(), ServiceFeedback.getInstance().getAllFeedbacks()).show();
                 } else {
                     Dialog.show("ERROR", "Server error", new Command("OK"));
                 }
             }
 
        }); 
-        con.addAll(objet,text,date,cours,enseignant,btnDel,btnUpdate/*, btnShow, , btnDel*/);
+        con.addAll(objet,text,avis,btnDel,btnUpdate/*, btnShow, , btnDel*/);
         add(con);
     }
 
@@ -111,6 +109,5 @@ public class ListReclamationForm extends Form{
                 return "id";
         }
     }
-
     
 }
