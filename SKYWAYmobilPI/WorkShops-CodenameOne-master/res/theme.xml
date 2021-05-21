@@ -33,6 +33,8 @@
     <image name="on-off-on.png" type="multi"  />
     <image name="profile-background.jpg"  />
     <image name="profile-pic.jpg" type="multi"  />
+    <image name="rec.jpg"  />
+    <image name="recla.jpg"  />
     <image name="signin-background.jpg"  />
     <image name="signup-background.jpg"  />
     <image name="smily.png" type="multi"  />

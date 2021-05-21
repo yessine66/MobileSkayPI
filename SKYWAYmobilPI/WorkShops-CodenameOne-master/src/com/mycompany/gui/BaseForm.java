@@ -87,54 +87,14 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("Accounts", FontImage.MATERIAL_ASSIGNMENT_IND, e -> new ListUtilisateurForm(res).show());
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_ACCOUNT_CIRCLE, e -> new ProfileForm(res).show());
         
-          tb.addMaterialCommandToSideMenu("Partenaires", FontImage.MATERIAL_RECEIPT, e -> new AjouterPartenaire(res).show());
-        //tb.addMaterialCommandToSideMenu("Liste Partenaires", FontImage.MATERIAL_SETTINGS, e -> new ListePartenaireForm(res).show());
-        tb.addMaterialCommandToSideMenu("Contact Partenaire", FontImage.MATERIAL_MARK_EMAIL_READ, e -> new ContactP(res).show());
-       // tb.addMaterialCommandToSideMenu("stat", FontImage.MATERIAL_EXIT_TO_APP, e -> new CatDomaine(res).show());
-        tb.addMaterialCommandToSideMenu("Promotions", FontImage.MATERIAL_STREETVIEW, e -> new AjouterPromotion(res).show());
-       // tb.addMaterialCommandToSideMenu("Liste promo", FontImage.MATERIAL_LOCAL_FIRE_DEPARTMENT, e -> new ListePromotionForm(res).show());
-        tb.addMaterialCommandToSideMenu("Question ?", FontImage.MATERIAL_QUESTION_ANSWER, e -> new AjouterQuestion(res).show());
-
-        
-                tb.addMaterialCommandToSideMenu("Reponses", FontImage.MATERIAL_QUESTION_ANSWER, e -> new AjouterReponse(res).show());
-
-        tb.addMaterialCommandToSideMenu("Ajout Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> new AjoutReclamation(res).show());
-        tb.addMaterialCommandToSideMenu("Lister Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> new ListReclamationForm(res).show());
-        
-        tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new SignInForm(res).show());
-        
-        
-    }
-    
-      protected void addSideMenuFront(Resources res) {
-        Toolbar tb = getToolbar();
-        tb.getStyle().setBgColor(155);
-        Image img = res.getImage("menux.png");
-        if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
-            img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
-        }
-        ScaleImageLabel sl = new ScaleImageLabel(img);
-        sl.setUIID("BottomPad");
-        sl.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
-        
-        tb.addComponentToSideMenu(LayeredLayout.encloseIn(
-                sl,
-                FlowLayout.encloseCenterBottom(
-                        new Label(res.getImage("smily.png"), "PictureWhiteBackgrond"))
-        ));
-        
-        tb.addMaterialCommandToSideMenu("Menu", FontImage.MATERIAL_UPDATE, e -> new MenuFront(res,res.getImage("menux.png")).show());
-        tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_ACCOUNT_CIRCLE, e -> new ProfileForm(res).show());
-        
-        tb.addMaterialCommandToSideMenu("Partenaires", FontImage.MATERIAL_RECEIPT, e -> new ListePartenaireFront(res).show());
-         tb.addMaterialCommandToSideMenu("Nos Promotions", FontImage.MATERIAL_LOCAL_FIRE_DEPARTMENT, e -> new ListePromotionFormFront(res).show());
-         
-         tb.addMaterialCommandToSideMenu("Passer un test", FontImage.MATERIAL_CONTENT_PASTE, e -> new testFront(res).show());
-        
-        tb.addMaterialCommandToSideMenu("Ajout Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> new AjoutReclamation(res).show());
-        tb.addMaterialCommandToSideMenu("Lister Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> new ListReclamationForm(res).show());
-        
-        tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new SignInForm(res).show());
+          tb.addMaterialCommandToSideMenu("ajouter partenaire", FontImage.MATERIAL_UPDATE, e -> new AjouterPartenaire(res).show());
+        tb.addMaterialCommandToSideMenu("Liste Partenaires", FontImage.MATERIAL_SETTINGS, e -> new ListePartenaireForm(res).show());
+        tb.addMaterialCommandToSideMenu("contact", FontImage.MATERIAL_MARK_EMAIL_READ, e -> new ContactP(res).show());
+              tb.addMaterialCommandToSideMenu("stat", FontImage.MATERIAL_EXIT_TO_APP, e -> new CatDomaine(res).show());
+               tb.addMaterialCommandToSideMenu("ajouter promo", FontImage.MATERIAL_UPDATE, e -> new AjouterPromotion(res).show());
+             //                 tb.addMaterialCommandToSideMenu("ajouter reclamation", FontImage.MATERIAL_UPDATE, e -> new AjoutReclamation(res).show());
+        tb.addMaterialCommandToSideMenu("Liste promo", FontImage.MATERIAL_LOCAL_FIRE_DEPARTMENT, e -> new ListePromotionForm(res).show());
+        tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show());
         
         
     }

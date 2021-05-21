@@ -10,16 +10,11 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
-import com.codename1.l10n.ParseException;
-import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.events.ActionListener;
-
-
-import com.mycompany.entities.Reclamation;
+import com.mycompany.entities.Feedback;
 import com.mycompany.utils.statics;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -27,26 +22,28 @@ import java.util.Map;
  *
  * @author IBTIHEL
  */
-public class ServiceReclamation {
-     public ArrayList<Reclamation> Reclamations;
+public class ServiceFeedback {
+    
+    public ArrayList<Feedback> Feedbacks;
 
-    public static ServiceReclamation instance = null;
+    public static  ServiceFeedback instance = null;
     public boolean resultOK;
     private ConnectionRequest req;
 
-    public ServiceReclamation() {
+    public ServiceFeedback() {
         req = new ConnectionRequest();
     }
 
-    public static ServiceReclamation getInstance() {
+    public static  ServiceFeedback getInstance() {
         if (instance == null) {
-            instance = new ServiceReclamation();
+            instance = new  ServiceFeedback();
         }
         return instance;
     }
     
-     public boolean addReclamation(Reclamation s) {
-        String url = statics.BASE_URL + "/reclamation/add/ok?objet=" + s.getObjet() + "&textR=" + s.getTextR() + "&dateEnvoi=" + s.getDateEnvoi() +"&id=" + s.getId()+ "&cours=" + s.getCours() + "&enseignant=" + s.getEnseignant();
+    
+      public boolean addFeedback(Feedback s) {
+        String url = statics.BASE_URL + "/feedback/addFeed/ok?objet=" + s.getObjet() + "&text=" + s.getText() + "&avis=" + s.getAvis() +"&id=" +s.getId()  ;
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -63,9 +60,9 @@ public class ServiceReclamation {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOK;
     }
-    
-      public boolean updateReclamation(Reclamation s) {
-        String url = statics.BASE_URL + "/updateReclamation/ok/" + s.getIdRec() + "?objet=" + s.getObjet() + "&textR=" + s.getTextR() + "&dateEnvoi=" + s.getDateEnvoi() + "&cours=" + s.getCours() + "&enseignant=" + s.getEnseignant() ;
+      
+       public boolean updateFeedback(Feedback s) {
+           String url = statics.BASE_URL + "/feedback/updateFeedback/ok?objet=" + s.getObjet() + "&text=" + s.getText() + "&avis=" + s.getAvis() + "&id=" + s.getId() ;
               
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -83,78 +80,74 @@ public class ServiceReclamation {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOK;
     }
-      
-      
-       public ArrayList<Reclamation> getAllReclamations() {
-        String url = statics.BASE_URL + "/reclamation/x/ok";
+    
+       
+       
+       public ArrayList<Feedback> getAllFeedbacks() {
+        String url = statics.BASE_URL + "/feedback/y/ok";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
                 System.out.println(new String(req.getResponseData()));
-                Reclamations = parseReclamations(new String(req.getResponseData()));
+                Feedbacks = parseReclamations(new String(req.getResponseData()));
                 req.removeResponseListener(this);
             }
 
             
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
-        return Reclamations;
+        return Feedbacks;
     }
        
-           public ArrayList<Reclamation> parseReclamations(String jsonText) {
+           public ArrayList<Feedback> parseReclamations(String jsonText) {
         try {
-           Reclamations = new ArrayList<>();
+          Feedbacks = new ArrayList<>();
             JSONParser j = new JSONParser();
-            Map<String, Object> ReclamationsListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
-            System.out.println(ReclamationsListJson);
+            Map<String, Object> FeedbacksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            System.out.println(FeedbacksListJson);
             
-            List<Map<String, Object>> list = (List<Map<String, Object>>) ReclamationsListJson.get("root");
+            List<Map<String, Object>> list = (List<Map<String, Object>>) FeedbacksListJson.get("root");
             System.out.println(list);
             //Parcourir la liste des tâches Json
             for (Map<String, Object> obj : list) {
                 //Création des tâches et récupération de leurs données
-                Reclamation s = new Reclamation();
-                float id = Float.parseFloat(obj.get("idRec").toString());
+               Feedback s = new Feedback();
+                float id = Float.parseFloat(obj.get("idF").toString());
       
-                s.setIdRec((int) id);
+                s.setIdF((int) id);
                 s.setObjet(obj.get("objet").toString());
-                s.setTextR(obj.get("textR").toString());
-                s.setDateEnvoi(obj.get("dateEnvoi").toString());
-                s.setCours(obj.get("cours").toString());
-                s.setEnseignant(obj.get("enseignant").toString());
-               
-               
-                
-                //Ajouter la tâche extraite de la réponse Json à la liste
-                Reclamations.add(s);
+                s.setText(obj.get("text").toString());
+                s.setAvis(obj.get("avis").toString());
+         //Ajouter la tâche extraite de la réponse Json à la liste
+                Feedbacks.add(s);
             }
 
         } catch (IOException ex) {
         }
         
-        return Reclamations;
+        return Feedbacks;
     }
        
-        public ArrayList<Reclamation> getSearchedStudents(String value) {
-        String url = statics.BASE_URL + "/reclamation/allStudents/search=" + value;
+        public ArrayList<Feedback> getSearchedFeeds(String value) {
+        String url = statics.BASE_URL + "/feedback/allFeedbacks/search=" + value;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
                 System.out.println(new String(req.getResponseData()));
-                Reclamations = parseReclamations(new String(req.getResponseData()));
+                Feedbacks = parseReclamations(new String(req.getResponseData()));
                 req.removeResponseListener(this);
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
-        return Reclamations;
+        return Feedbacks;
     }
         
-        public boolean deleteReclamation(Reclamation s) {
-        String url = statics.BASE_URL + "/reclamation/deleteStudentJson/ok/" + s.getIdRec(); //création de l'URL
+          public boolean deleteFeedback(Feedback s) {
+        String url = statics.BASE_URL + "/feedback/deleteFeed/ok/" + s.getIdF(); //création de l'URL
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -172,19 +165,21 @@ public class ServiceReclamation {
         return resultOK;
     }
         
-        public ArrayList<Reclamation> getTriReclamation(String value) {
-        String url = statics.BASE_URL + "/reclamation/allStudents/tri=" + value;
+        public ArrayList<Feedback> getTriReclamation(String value) {
+        String url = statics.BASE_URL + "/Feedback/allFeedbacks/tri=" + value;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
                 System.out.println(new String(req.getResponseData()));
-                Reclamations = parseReclamations(new String(req.getResponseData()));
+                Feedbacks = parseReclamations(new String(req.getResponseData()));
                 req.removeResponseListener(this);
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
-        return Reclamations;
+        return Feedbacks;
     }
+
+    
 }
