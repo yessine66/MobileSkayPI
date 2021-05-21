@@ -129,6 +129,8 @@ public class BaseForm extends Form {
         
         tb.addMaterialCommandToSideMenu("Partenaires", FontImage.MATERIAL_RECEIPT, e -> new ListePartenaireFront(res).show());
          tb.addMaterialCommandToSideMenu("Nos Promotions", FontImage.MATERIAL_LOCAL_FIRE_DEPARTMENT, e -> new ListePromotionFormFront(res).show());
+         
+         tb.addMaterialCommandToSideMenu("Passer un test", FontImage.MATERIAL_CONTENT_PASTE, e -> System.out.println("\n\n\ntesttestestfatma    fatma "));
         
         tb.addMaterialCommandToSideMenu("Ajout Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> new AjoutReclamation(res).show());
         tb.addMaterialCommandToSideMenu("Lister Reclamation ", FontImage.MATERIAL_CONTACT_SUPPORT, e -> new ListReclamationForm(res).show());
