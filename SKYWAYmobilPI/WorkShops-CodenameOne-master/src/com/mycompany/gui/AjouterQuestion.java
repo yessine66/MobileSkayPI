@@ -11,6 +11,7 @@ import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
 import com.codename1.components.ToastBar;
 import com.codename1.components.ToastBar.Status;
+
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.Component;
@@ -30,6 +31,9 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
 
 //import static java.awt.SystemColor.text;
 //import static java.awt.SystemColor.text;
@@ -38,6 +42,23 @@ import com.codename1.ui.RadioButton;
 import com.codename1.ui.layouts.GridLayout;
 import com.mycompany.entities.Question;
 import com.mycompany.services.ServiceQuestion;
+import com.sun.mail.smtp.SMTPSSLTransport;
+import com.sun.mail.smtp.SMTPTransport;
+import java.util.Date;
+import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+
+
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  *
@@ -158,12 +179,15 @@ public class AjouterQuestion extends BaseForm {
        
         /************************************/  
  
-        
+       
+        TextField email = new TextField("","saisir votre email", 20, TextField.ANY);
+ email.setUIID("TextFieldBalck");
+      addStringValue ("email",email);
         TextField textQ = new TextField("", "Entrer une question");
         textQ.setUIID("TextFieldBalck");
         addStringValue ("textQ",textQ);
   
-        
+         
          TextField nbrPoint = new TextField("", "Entrer le nombre des points");
         nbrPoint.setUIID("TextFieldBalck");
         addStringValue ("nbrPoint",nbrPoint);
@@ -173,7 +197,7 @@ public class AjouterQuestion extends BaseForm {
          TextField nameT = new TextField("", "Entrer la catégorie");
         nameT.setUIID("TextFieldBalck");
         addStringValue ("nameT",nameT);
-  
+
     
         
         Button btnAjouter = new Button ("Ajouter");
@@ -181,7 +205,65 @@ public class AjouterQuestion extends BaseForm {
         
         //on click btn event 
         
- 
+
+        
+        
+   Button btnEmail = new Button("Saraha");
+        addStringValue("", btnEmail);
+        btnEmail.addActionListener(e -> {
+           
+           
+            
+            try {
+                //Properties props = new Properties()
+                Properties props = new Properties();
+                props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+                props.put("mail.smtp.port", "587"); //TLS Port
+                props.put("mail.smtp.auth", "true"); //enable authentication
+                 props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
+                Session session = Session.getInstance(props, null);
+                MimeMessage msg = new MimeMessage(session);
+                MimeMessage ms = new MimeMessage(session);
+                msg.setFrom(new InternetAddress(" Passage du test le 22-05-2021 <monEmail@domaine.com>"));
+                msg.setRecipients(Message.RecipientType.TO, email.getText().toString()   );
+                msg.setSubject("SKYWAY LEARNING: Confirmation du  Yessine Fraj");
+                msg.setDescription("Bienvenue sur Skyway Learning cher Yessine Fraj! Votre test sera le ");
+                msg.setSentDate(new Date(System.currentTimeMillis()));
+                String txt =" Bienvenue sur Skyway Learning cher Yessine Fraj! Votre test sera le ";
+             //   msg.setText(txt);
+                   // Create the message part
+         BodyPart messageBodyPart = new MimeBodyPart();
+
+         // Now set the actual message
+         messageBodyPart.setText(" Bienvenue sur Skyway Learning cher Yessine Fraj! Votre test sera le ");
+
+         // Create a multipar message
+         Multipart multipart = new MimeMultipart();
+                 messageBodyPart = new MimeBodyPart();
+         String filename = "C:\\Users\\DELL\\Desktop\\skyway-fr.png";
+         DataSource source = new FileDataSource(filename);
+         messageBodyPart.setDataHandler(new DataHandler(source));
+         messageBodyPart.setFileName(filename);
+         multipart.addBodyPart(messageBodyPart);
+msg.setContent(multipart);
+                SMTPTransport st = (SMTPSSLTransport)session.getTransport("smtps");
+                st.connect("smtp.gmail.com",465,"skyway.learning1@gmail.com","skyway123");
+                st.sendMessage(msg, msg.getAllRecipients());
+              
+                System.out.println("server response: "+st.getLastServerResponse());
+                System.out.println("haha");
+               
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+            System.err.println("erreur!!! ");
+        }
+           
+        
+            
+           
+        }
+);
         btnAjouter.addActionListener((e)-> { 
         
         
@@ -314,13 +396,7 @@ public class AjouterQuestion extends BaseForm {
      l.getParent().repaint();;
            
         
-        
+    }
     }
     
-    
-    
-    
-    
-    
-    
-}
+
